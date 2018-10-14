@@ -1,4 +1,6 @@
 import uuid from 'uuid';
+import database from '../firebase/firebase';
+
 
 const addEvent = (event) => ({
   type: 'ADD_EVENT',
@@ -12,19 +14,27 @@ export const startAddEvent = (event) => {
       ...event
     }
     console.log(`In startAddEvent. with ${JSON.stringify(event)}`);
-    dispatch(addEvent(eventFull));
+    return database.ref(`events/${eventFull.id}`).set(eventFull).then(
+      dispatch(addEvent(eventFull))
+    ).catch( (e) => {
+      (e) => {console.log('Error saving event: ', e)}
+    });
   };
 };
 
-const removeEvent = (priority) => ({
+const removeEvent = (id) => ({
   type: 'REMOVE_EVENT',
-  priority
+  id
 });
 
-export const startRemoveEvent = (priority) => {
-  console.log(`Inside startRemoveEvent with priority ${priority}`);
+export const startRemoveEvent = (id) => {
+  console.log(`Inside startRemoveEvent with id ${id}`);
   return (dispatch, getState) => {
-    dispatch(removeEvent(priority));
+    return database.ref(`events/${id}`).remove().then(
+      dispatch(removeEvent(id))
+    ).catch(
+      (e) => {console.log('Error deleting event: ', e)}
+    )
   }
 }
 
@@ -34,3 +44,23 @@ const editEVENT = (id, updates) => ({
   id,
   updates
 });
+
+const setEvents = (events) => ({
+  type: 'SET_EVENTS',
+  events
+});
+
+export const startSetEvents = () => {
+  return (dispatch, getState) => {
+    return database.ref(`events`).once('value').then(
+      (snapshot) => {
+        const events = [];
+        snapshot.forEach(
+          (childSnapshot) => {
+            events.push(childSnapshot.val());
+          }
+        );
+      dispatch(setEvents(events));
+    });
+  };
+};

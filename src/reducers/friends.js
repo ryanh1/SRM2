@@ -14,6 +14,9 @@ const friendsReducer = (
       return state.filter( ({id}) => {
         return id != action.id
       })
+    case 'SET_FRIENDS':
+      console.log('Inside set_friends reducer');
+      return action.friends;
     // case 'EDIT_FRIEND':
     //   return state.map( (friend) => {
     //     if (friend.id === action.id) {

@@ -1,4 +1,5 @@
 import uuid from 'uuid';
+import database from '../firebase/firebase';
 
 // ADD_FRIEND
 const addFriend = (friend) => ({
@@ -14,13 +15,18 @@ export const startAddFriend = ({
   events = []
 } = {}) => {
   return (dispatch, getState) => {
-    dispatch(addFriend({
+    const friend = {
       id: uuid(),
       firstName,
       lastName,
       priority,
       events
-    }))
+    }
+    return database.ref(`friends/${friend.id}`).set(friend).then(
+      dispatch(addFriend(friend))
+    ).catch(
+      (e) => {console.log('Error saving friend: ', e)}
+    );
     console.log('dispatched startAddFriend');
   };
 };
@@ -36,6 +42,28 @@ const removeFriend = (id) => ({
 export const startRemoveFriend = (id) => {
   console.log(`Inside startRemoveFriend with id ${id}`);
   return (dispatch, getState) => {
-    dispatch(removeFriend(id));
+    return database.ref(`friends/${id}`).remove().then(() => {
+      dispatch(removeFriend(id));
+    });
   }
 }
+
+const setFriends = (friends) => ({
+  type: 'SET_FRIENDS',
+  friends
+});
+
+export const startSetFriends = () => {
+  return (dispatch, getState) => {
+    return database.ref(`friends`).once('value').then(
+      (snapshot) => {
+        const friends = [];
+        snapshot.forEach(
+          (childSnapshot) => {
+            friends.push(childSnapshot.val());
+          }
+        );
+      dispatch(setFriends(friends));
+    });
+  };
+};

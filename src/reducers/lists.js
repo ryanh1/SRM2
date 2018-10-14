@@ -16,6 +16,9 @@ const listsReducer = (
       return state.filter( ({id}) => {
         return id != action.id
       })
+    case 'SET_LISTS':
+      console.log('Inside set_lists reducer');
+      return action.lists;
     // case 'EDIT_LIST':
     //   return state.map( (list) => {
     //     if (list.id === action.id) {

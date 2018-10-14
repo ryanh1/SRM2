@@ -1,3 +1,4 @@
 node_modules/
 private.js
 public/dist/bundle.js
+private.js
