@@ -5,16 +5,17 @@ const listsReducer = (
 ) => {
   switch (action.type) {
     case 'ADD_LIST':
-      const reducedList = state.filter( ({id}) => {
-        return id != action.id
+      const reducedList = state.filter( (priority) => {
+        return priority != action.priority
       })
-      return [
+      const completeList = [
         ...reducedList,
         action.priority
       ]
+      return completeList.sort()
     case 'REMOVE_LIST':
-      return state.filter( ({id}) => {
-        return id != action.id
+      return state.filter( (priority) => {
+        return priority != action.priority
       })
     case 'SET_LISTS':
       console.log('Inside set_lists reducer');

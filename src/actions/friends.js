@@ -9,6 +9,7 @@ const addFriend = (friend) => ({
 
 //dispatch addFriend
 export const startAddFriend = ({
+  id = '',
   firstName = "",
   lastName = "",
   priority = 0,
@@ -16,13 +17,13 @@ export const startAddFriend = ({
 } = {}) => {
   return (dispatch, getState) => {
     const friend = {
-      id: uuid(),
+      id: !id == '' ? id : uuid(),
       firstName,
       lastName,
       priority,
       events
     }
-    return database.ref(`friends/${friend.id}`).set(friend).then(
+    return database.ref(`friends/${friend.id}`).update(friend).then(
       dispatch(addFriend(friend))
     ).catch(
       (e) => {console.log('Error saving friend: ', e)}

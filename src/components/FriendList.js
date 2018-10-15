@@ -5,7 +5,9 @@ import {connect} from 'react-redux';
 import FriendCard from './friendcard.js';
 import selectFriendsByPriority from '../selectors/selectFriendsByPriority';
 
-import DeleteListButton from './deleteListButton';
+// import DeleteListButton from './deleteListButton';
+import DeleteListOpenModalButton from './DeleteListOpenModalButton';
+
 
 
 const FriendList = (props) => {
@@ -13,7 +15,11 @@ const FriendList = (props) => {
   return (
     <div>
       <h2>List: {props.priority}</h2>
-      <DeleteListButton priority={props.priority}/>
+      {/* <DeleteListButton priority={props.priority}/> */}
+      <DeleteListOpenModalButton
+        priority={props.priority}
+        modalOpen={false}
+      />
       {
         filteredFriends.length === 0 ? (
           <span>No friends.</span>

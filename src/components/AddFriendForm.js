@@ -7,8 +7,10 @@ class AddFriendForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: props.friend ? props.friend.id : '',
       firstName: props.friend ? props.friend.firstName : '',
       lastName: props.friend ? props.friend.lastName : '',
+      priority: props.friend ? props.friend.priority: '',
       events: props.friend ? props.friend.events: []
     }
   }
@@ -33,6 +35,7 @@ class AddFriendForm extends React.Component {
     e.preventDefault();
     console.log('Called onSubmit function within AddFriendForm');
     this.props.onSubmit({
+      id: this.state.id,
       firstName: this.state.firstName,
       lastName: this.state.lastName,
       priority: this.state.priority
@@ -45,9 +48,25 @@ class AddFriendForm extends React.Component {
       <div>
         <h2>Add a new friend.</h2>
         <form onSubmit={this.onSubmit}>
-          <input type="text" placeholder="First Name" value={this.state.firstName} onChange={this.onFirstNameChange}/>
-          <input type="text" placeholder="Last Name" value={this.state.lastName} onChange={this.onLastNameChange}/>
-          <input type="number" placeholder="priority" value={this.state.priority} onChange={this.onPriorityChange}/>
+          <input
+            type="text"
+            placeholder={!!this.props.friend ? this.state.firstName : "First Name"}
+            value={this.state.firstName}
+            onChange={this.onFirstNameChange}
+          />
+          <input
+            type="text"
+            placeholder={!!this.props.friend ? this.state.lastName : "Last Name"}
+            value={this.state.lastName}
+            onChange={this.onLastNameChange}
+          />
+          {this.state.id === '' ? <span></span> : <span>List: </span>}
+          <input
+            type="number"
+            placeholder={!!this.props.friend ? this.state.priority: "priority"}
+            value={this.state.priority}
+            onChange={this.onPriorityChange}
+          />
           <button>Save Friend</button>
         </form>
       </div>

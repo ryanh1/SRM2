@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import {Redirect} from 'react-router-dom'
 
-import AddFriendForm from './AddFriendForm';
+import AddFriendPage from './AddFriendPage';
 import {startRemoveFriend} from '../actions/friends';
 
 const EditFriendPage = (props) => (
   <div>
-    <div>id: {props.friend.id}, Name: {props.friend.firstName} {props.friend.lastName}</div>
+    <AddFriendPage friend={props.friend}/>
     <button onClick={() => {
       props.dispatch(startRemoveFriend(props.friend.id));
       props.history.push('/');

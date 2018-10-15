@@ -16,23 +16,27 @@ store.subscribe(() => {
   console.log(store.getState());
 });
 
-const template = (
+const loadingTemplate = (
+  <div>Connecting to database</div>
+);
+
+const actualTemplate = (
   <Provider store={store}>
     <AppRouter />
   </Provider>
 );
 
-// Render the
+// Render the template to the DOM
 let hasRendered = false;
+const output = document.getElementById('app');
 const renderApp = () => {
   if (!hasRendered) {
-    const output = document.getElementById('app');
-    ReactDOM.render(template, output)
+    ReactDOM.render(actualTemplate, output)
     hasRendered = true;
   }
 };
 
-
+ReactDOM.render(loadingTemplate, output)
 store.dispatch(setInitialState()).then(
   () => {
     renderApp();
