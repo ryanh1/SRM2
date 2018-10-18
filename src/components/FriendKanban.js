@@ -1,19 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {connect} from 'react-redux';
-
+import {Link} from 'react-router-dom';
 
 import FriendList from './FriendList.js';
 import AddFriendPage from './AddFriendPage.js';
-import AddListPage from './AddListPage.js';
-
-
-
 
 const FriendKanban = (props) => (
   <div>
+    <Link to={'/managelists'}>Manage lists</Link>
     <h1>See your friends in different lists</h1>
-    <AddListPage />
 
     <div>
       {

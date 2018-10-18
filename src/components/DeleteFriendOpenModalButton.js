@@ -3,14 +3,14 @@ import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 import { connect } from 'react-redux';
 
-import {startRemoveList} from '../actions/lists';
+import {startRemoveFriend} from '../actions/friends';
 
-class DeleteListOpenModalButton extends React.Component {
+class DeleteFriendOpenModalButton extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       modalOpen: props.modalOpen,
-      priority: props.priority
+      friend: props.friend
     }
   }
 
@@ -24,8 +24,9 @@ class DeleteListOpenModalButton extends React.Component {
   }
 
   onYesButtonClick = () => {
-    this.props.dispatch(startRemoveList(this.state.priority));
+    this.props.dispatch(startRemoveFriend(this.state.friend.id));
     this.setState({modalOpen: false});
+    this.props.history.push('/');
   }
 
   render() {
@@ -38,12 +39,12 @@ class DeleteListOpenModalButton extends React.Component {
           contentLabel={'Confirm'}
         >
           {console.log('Inside Modal. ','this.state.modalOpen = ', this.state.modalOpen)}
-          <div>Are you sure you want to delete list {this.state.priority}?</div>
+          <div>Are you sure you want to delete friend: {this.state.friend.firstName} {this.state.friend.lastName}?</div>
           <button onClick={this.onYesButtonClick}>Yes</button>
           <button onClick={this.onNoButtonClick}>No</button>
         </Modal>
 
-        {console.log('Inside DeleteListOpenModalButton ', 'this.props.modalOpen = ', this.state.modalOpen)}
+        {console.log('Inside DeleteFriendOpenModalButton ', 'this.props.modalOpen = ', this.state.modalOpen)}
         <button onClick={this.onDeleteButtonClick}>Delete</button>
 
       </div>
@@ -51,4 +52,4 @@ class DeleteListOpenModalButton extends React.Component {
   }
 }
 
-export default connect()(DeleteListOpenModalButton);
+export default connect()(DeleteFriendOpenModalButton);

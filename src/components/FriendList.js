@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 
 import FriendCard from './friendcard.js';
 import selectFriendsByPriority from '../selectors/selectFriendsByPriority';
-
 // import DeleteListButton from './deleteListButton';
 import DeleteListOpenModalButton from './DeleteListOpenModalButton';
 

@@ -4,15 +4,22 @@ import { connect } from 'react-redux';
 import {Redirect} from 'react-router-dom'
 
 import AddFriendPage from './AddFriendPage';
+import DeleteFriendOpenModalButton from './DeleteFriendOpenModalButton';
 import {startRemoveFriend} from '../actions/friends';
+
 
 const EditFriendPage = (props) => (
   <div>
     <AddFriendPage friend={props.friend}/>
-    <button onClick={() => {
+    <DeleteFriendOpenModalButton
+      friend={props.friend}
+      history={props.history}
+      modalOpen={false}
+    />
+    {/* <button onClick={() => {
       props.dispatch(startRemoveFriend(props.friend.id));
       props.history.push('/');
-    }}>Delete</button>
+    }}>Delete</button> */}
   </div>
 );
 
