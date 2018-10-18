@@ -45,7 +45,7 @@ class DeleteFriendOpenModalButton extends React.Component {
         </Modal>
 
         {console.log('Inside DeleteFriendOpenModalButton ', 'this.props.modalOpen = ', this.state.modalOpen)}
-        <button onClick={this.onDeleteButtonClick}>Delete</button>
+        <button onClick={this.onDeleteButtonClick}>Delete {this.props.friend.firstName} {this.props.friend.lastName}</button>
 
       </div>
     )

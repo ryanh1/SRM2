@@ -45,8 +45,7 @@ class AddFriendForm extends React.Component {
   // Render component
   render() {
     return (
-      <div>
-        <h2>Add a new friend.</h2>
+      <div className="pt-3">
         <form onSubmit={this.onSubmit}>
           <input
             type="text"

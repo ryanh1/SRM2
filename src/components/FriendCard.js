@@ -3,15 +3,11 @@ import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
 
-import EventList from './eventlist.js';
-
-
 const FriendCard = (props) => (
-    <div>
+    <div className="font-weight-bold text-primary">
       <Link to={`/friends/${props.id}`}>
         {props.firstName} {props.lastName}
       </Link>
-      <EventList friendID={props.id}/>
     </div>
 );
 
