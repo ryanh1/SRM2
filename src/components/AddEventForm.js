@@ -1,13 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import moment from 'moment';
 
 export default class AddEventForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       note: props.event ? props.event.note : '',
-      date: moment().format('MMMM Do YYYY, h:mm:ss a'),
+      date: Date.now(),
       friendID: props.friendID,
       error: ''
     }
@@ -40,7 +39,7 @@ export default class AddEventForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <div >
         <form onSubmit={this.onSubmit}>
           {this.state.error && <p className="form__error">{this.state.error}</p>}
           <p>{this.props.date}</p>
@@ -50,7 +49,7 @@ export default class AddEventForm extends React.Component {
             value={this.state.note}
             onChange={this.onNoteChange}
           />
-          <button>Submit</button>
+          <button className="ml-3">Submit</button>
         </form>
       </div>
     )

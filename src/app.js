@@ -7,6 +7,7 @@ import configureStore from './store/configureStore';
 import './firebase/firebase';
 import setInitialState from './actions/setInitialState';
 
+
 const store = configureStore();
 console.log('src/app.js is running!');
 console.log("Redux store state:")

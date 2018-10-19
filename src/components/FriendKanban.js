@@ -3,15 +3,11 @@ import ReactDOM from 'react-dom';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
-import FriendList from './FriendList.js';
-import AddFriendPage from './AddFriendPage.js';
+import FriendList from './FriendList';
+import AddFriendPage from './AddFriendPage';
 
 const FriendKanban = (props) => (
   <div className="p-4">
-    <Link
-      className="d-flex justify-content-end"
-      to={'/managelists'}
-    >Manage lists</Link>
     <h1 className="text-center mb-4">See your friends in different lists</h1>
 
     <div className="d-flex justify-content-between">
