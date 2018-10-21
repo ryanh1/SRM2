@@ -14,7 +14,7 @@ const EditFriendPage = (props) => (
     <h2 className="m-2">Edit friend</h2>
     <div>
       <div className="text-center d-inline-flex border border-secondary mt-5 m-3 p-3">
-        <AddFriendPage friend={props.friend}/>
+        <AddFriendPage friend={props.friend} function="edit" />
       </div>
     </div>
     <div className="text-center d-inline-flex border border-secondary mt-5 m-3 p-3">

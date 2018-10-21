@@ -16,7 +16,7 @@ const EventList = (props) => (
       ) : (
         props.events.map( (event) => {
           return (
-            <div key={event}>
+            <div key={event.id}>
               <Event date={event.date} note={event.note} id={event.id}/>
             </div>
           )

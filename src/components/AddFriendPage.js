@@ -5,18 +5,27 @@ import {history} from '../routers/AppRouter';
 
 
 import AddFriendForm from './AddFriendForm.js';
-import { startAddFriend } from '../actions/friends'
-import { startAddList } from '../actions/lists'
+import { startAddFriend, startEditFriend } from '../actions/friends'
+import { startAddList, startEditList } from '../actions/lists'
 
 const AddFriendPage = (props) => (
   <AddFriendForm
     friend={props.friend}
-    onSubmit={(friend) => {
-        console.log('Passed in props.dispatch(startAddFriend(friend)) to onSubmit');
-        props.dispatch(startAddFriend(friend));
-        props.dispatch(startAddList(friend.priority));
-        history.push('/');
-      }
+    onSubmit={
+      (props.function=="edit") ?
+        (friend) => {
+          console.log('Passed in props.dispatch(startEditFriend(friend)) to onSubmit');
+          props.dispatch(startEditFriend(friend.id, {...friend}));
+          props.dispatch(startAddList(friend.priority));
+          history.push('/');
+        }
+        :
+        (friend) => {
+          console.log('Passed in props.dispatch(startAddFriend(friend)) to onSubmit');
+          props.dispatch(startAddFriend(friend));
+          props.dispatch(startAddList(friend.priority));
+          history.push('/');
+        }
     }
   />
 );

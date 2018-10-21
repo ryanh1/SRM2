@@ -29,7 +29,7 @@ const FriendKanban = (props) => (
     </div>
     <div className="text-center border border-secondary mt-5">
       <h2 className="m-2">Add a new friend.</h2>
-      <AddFriendPage />
+      <AddFriendPage function="add"/>
     </div>
   </div>
 );

@@ -1,5 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {connect} from 'react-redux';
+
+import selectFriendsByPriority from '../selectors/selectFriendsByPriority';
 
 class AddFriendForm extends React.Component {
 
@@ -11,24 +14,28 @@ class AddFriendForm extends React.Component {
       firstName: props.friend ? props.friend.firstName : '',
       lastName: props.friend ? props.friend.lastName : '',
       priority: props.friend ? props.friend.priority: '',
-      events: props.friend ? props.friend.events: []
+      orderInList: props.friend ? props.friend.orderInList: '',
+      events: props.friend ? props.friend.events: [],
     }
   }
 
   // defined functions
   onFirstNameChange = (e) => {
     const firstName = e.target.value;
-    this.setState(() => ({firstName}));
+    const orderInList = selectFriendsByPriority(this.props.friends, this.state.priority).length + 1;
+    this.setState(() => ({firstName, orderInList}));
   }
 
   onLastNameChange = (e) => {
     const lastName = e.target.value;
-    this.setState(() => ({lastName}));
+    const orderInList = selectFriendsByPriority(this.props.friends, this.state.priority).length + 1;
+    this.setState(() => ({lastName, orderInList}));
   }
 
   onPriorityChange = (e) => {
     const priority = e.target.value;
-    this.setState(() => ({priority}));
+    const orderInList = selectFriendsByPriority(this.props.friends, priority).length + 1;
+    this.setState(() => ({priority, orderInList}));
   }
 
   onSubmit = (e) => {
@@ -38,7 +45,8 @@ class AddFriendForm extends React.Component {
       id: this.state.id,
       firstName: this.state.firstName,
       lastName: this.state.lastName,
-      priority: this.state.priority
+      priority: this.state.priority,
+      orderInList: this.state.orderInList
     })
   }
 
@@ -71,7 +79,12 @@ class AddFriendForm extends React.Component {
       </div>
     )
   }
-
 }
 
-export default AddFriendForm;
+const mapStateToProps = (state, props) => {
+    return {
+      friends: state.friends
+    };
+};
+
+export default connect(mapStateToProps)(AddFriendForm);

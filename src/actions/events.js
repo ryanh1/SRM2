@@ -38,12 +38,19 @@ export const startRemoveEvent = (id) => {
   }
 }
 
-// EDIT_EVENT
-const editEVENT = (id, updates) => ({
-  type: 'EDIT_EVENT',
+export const editEvent = (id, updates) => ({
+  type: 'EDIT_Event',
   id,
   updates
 });
+
+export const startEditEvent = (id, updates) => {
+  return (dispatch, getState) => {
+    database.ref(`events/${id}`).update(updates).then(() => {
+      dispatch(editEvents(id, updates));
+    });
+  };
+};
 
 const setEvents = (events) => ({
   type: 'SET_EVENTS',

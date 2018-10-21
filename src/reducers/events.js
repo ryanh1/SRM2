@@ -14,6 +14,17 @@ const eventsReducer = (
       return state.filter( ({id}) => {
         return id != action.id
       })
+    case 'EDIT_EVENT':
+      return state.map((event) => {
+        if (event.id === action.id) {
+          return {
+            ...event,
+            ...action.updates
+          }
+        } else {
+          return event;
+        }
+      })
     case 'SET_EVENTS':
       console.log('Inside set_events reducer');
       return action.events;
