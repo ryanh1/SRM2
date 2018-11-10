@@ -16,6 +16,7 @@ class AddFriendForm extends React.Component {
       priority: props.friend ? props.friend.priority: '',
       orderInList: props.friend ? props.friend.orderInList: '',
       events: props.friend ? props.friend.events: [],
+      todo: props.friend? props.friend.todo: ''
     }
   }
 
@@ -38,6 +39,12 @@ class AddFriendForm extends React.Component {
     this.setState(() => ({priority, orderInList}));
   }
 
+  onTodoChange = (e) => {
+    const todo = e.target.value;
+    const orderInList = selectFriendsByPriority(this.props.friends, this.state.priority).length + 1;
+    this.setState(() => ({todo, orderInList}));
+  }
+
   onSubmit = (e) => {
     e.preventDefault();
     console.log('Called onSubmit function within AddFriendForm');
@@ -46,7 +53,8 @@ class AddFriendForm extends React.Component {
       firstName: this.state.firstName,
       lastName: this.state.lastName,
       priority: this.state.priority,
-      orderInList: this.state.orderInList
+      orderInList: this.state.orderInList,
+      todo: this.state.todo
     })
   }
 
@@ -73,6 +81,12 @@ class AddFriendForm extends React.Component {
             placeholder={!!this.props.friend ? this.state.priority: "priority"}
             value={this.state.priority}
             onChange={this.onPriorityChange}
+          />
+          <input
+            type="text"
+            placeholder={!!this.props.friend ? this.state.todo : "To do"}
+            value={this.state.todo}
+            onChange={this.onTodoChange}
           />
           <button>Save Friend</button>
         </form>

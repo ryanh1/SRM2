@@ -9,7 +9,10 @@ import sortFriendsInList from '../selectors/sortFriendsInList';
 
 // import DeleteListButton from './deleteListButton';
 import DeleteListOpenModalButton from './DeleteListOpenModalButton';
-import { startEditFriend } from '../actions/friends'
+import { startEditFriend } from '../actions/friends';
+import {defaultPriority} from '../system/variables';
+import { startAddList, startRemoveList } from '../actions/lists'
+
 
 class FriendList extends React.Component {
   constructor(props) {
@@ -35,7 +38,36 @@ class FriendList extends React.Component {
     console.log('newFriend', JSON.stringify(newFriend))
     console.log('newOverlappingFriend', JSON.stringify(newOverlappingFriend))
     console.log('new Filtered Friends', JSON.stringify(this.state.filteredFriends))
+  }
 
+  onCheckButton = (friend) => {
+    // 0. Update orderInList and priority values
+    var originalPriority = friend.priority;
+    var newPriority = defaultPriority;
+    var newList = selectFriendsByPriority(this.props.friends, defaultPriority);
+    friend.orderInList = newList.length + 1;
+    friend.priority = newPriority;
+
+    // 1. Save edited friend
+    this.props.dispatch(startEditFriend(friend.id, {...friend}));
+
+    // 2. Add a new list if necessary
+    this.props.dispatch(startAddList(newPriority));
+
+    // 3. If the old list is empty, delete it.
+    var countInListBeforeDelete = 0;
+    this.props.friends.forEach(
+      function(friend) {
+        if (friend.priority == originalPriority) {
+          countInListBeforeDelete += 1;
+          console.log('printing: ', JSON.stringify(friend));
+        }
+      }
+    )
+    console.log('countInListBeforeDelete: ', JSON.stringify(countInListBeforeDelete));
+    if (countInListBeforeDelete === 0 ) {
+      this.props.dispatch(startRemoveList(originalPriority));
+    }
   }
 
   onUpButton = (friend) => {
@@ -79,6 +111,7 @@ class FriendList extends React.Component {
                         friend={friend}
                         id={friend.id}
                         key={friend.id}
+                        checkButton={this.onCheckButton}
                         upButton={this.onUpButton}
                         downButton={this.onDownButton}
                         change={true}

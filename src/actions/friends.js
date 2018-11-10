@@ -15,7 +15,8 @@ export const startAddFriend = ({
   lastName = "",
   priority = 0,
   orderInList = 0,
-  events = []
+  events = [],
+  todo = ""
 } = {}) => {
   return (dispatch, getState) => {
     const friend = {
@@ -26,6 +27,7 @@ export const startAddFriend = ({
       priority,
       orderInList,
       events,
+      todo
     }
     const uid = getState().auth.uid;
     return database.ref(`users/${uid}/friends/${friend.id}`).update(friend).then(

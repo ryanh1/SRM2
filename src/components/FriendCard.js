@@ -14,6 +14,10 @@ class FriendCard extends React.Component {
     this.setState(() => ({priority, orderInList}));
   }
 
+  onCheckButton = () => {
+    this.props.checkButton(this.props.friend);
+  }
+
   onUpButton = () => {
     this.props.upButton(this.props.friend);
   }
@@ -24,15 +28,20 @@ class FriendCard extends React.Component {
 
   render() {
     return (
-      <div className="font-weight-bold text-primary d-flex justify-content-between">
-        <Link to={`/friends/${this.props.friend.id}`}>
-          {this.props.friend.firstName} {this.props.friend.lastName}
-        </Link>
-        <div className="ml-3">
-          <button onClick={this.onUpButton}>▲</button>
-          <button onClick={this.onDownButton}>▼</button>
+      <div>
+        <div className="font-weight-bold text-primary d-flex justify-content-between">
+          <Link to={`/friends/${this.props.friend.id}`}>
+            {this.props.friend.firstName} {this.props.friend.lastName}
+          </Link>
+          <div className="ml-3">
+            <button onClick={this.onCheckButton}>✓</button>
+            <button onClick={this.onUpButton}>▲</button>
+            <button onClick={this.onDownButton}>▼</button>
+          </div>
         </div>
+        <div>{this.props.friend.todo}</div>
       </div>
+
     )
   }
 }

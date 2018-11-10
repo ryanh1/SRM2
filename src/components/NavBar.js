@@ -16,12 +16,6 @@ const NavBar = () => (
                 <Link className="nav-link"to="/managelists">Manage lists</Link>
               </li>
               <li className="nav-item">
-                  <a className="nav-link" href="#">Services</a>
-              </li>
-              <li className="nav-item">
-                  <a className="nav-link" href="#">Contact</a>
-              </li>
-              <li className="nav-item">
                   <LogOutButton className="" />
               </li>
           </ul>
