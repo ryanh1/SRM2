@@ -27,7 +27,8 @@ export const startAddFriend = ({
       orderInList,
       events,
     }
-    return database.ref(`friends/${friend.id}`).update(friend).then(
+    const uid = getState().auth.uid;
+    return database.ref(`users/${uid}/friends/${friend.id}`).update(friend).then(
       dispatch(addFriend(friend))
     ).catch(
       (e) => {console.log('Error saving friend: ', e)}
@@ -47,7 +48,8 @@ const removeFriend = (id) => ({
 export const startRemoveFriend = (id) => {
   console.log(`Inside startRemoveFriend with id ${id}`);
   return (dispatch, getState) => {
-    return database.ref(`friends/${id}`).remove().then(() => {
+    const uid = getState().auth.uid;
+    return database.ref(`users/${uid}/friends/${id}`).remove().then(() => {
       dispatch(removeFriend(id));
     });
   }
@@ -61,7 +63,8 @@ export const editFriend = (id, updates) => ({
 
 export const startEditFriend = (id, updates) => {
   return (dispatch, getState) => {
-    database.ref(`friends/${id}`).update(updates).then(() => {
+    const uid = getState().auth.uid;
+    database.ref(`users/${uid}/friends/${id}`).update(updates).then(() => {
       dispatch(editFriend(id, updates));
     });
   };
@@ -74,7 +77,8 @@ const setFriends = (friends) => ({
 
 export const startSetFriends = () => {
   return (dispatch, getState) => {
-    return database.ref(`friends`).once('value').then(
+    const uid = getState().auth.uid;
+    return database.ref(`users/${uid}/friends`).once('value').then(
       (snapshot) => {
         const friends = [];
         snapshot.forEach(

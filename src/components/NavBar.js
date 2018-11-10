@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Link} from 'react-router-dom';
 
+import LogOutButton from './LogOutButton';
+
 const NavBar = () => (
   <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-3">
     <div className="container">
@@ -18,6 +20,9 @@ const NavBar = () => (
               </li>
               <li className="nav-item">
                   <a className="nav-link" href="#">Contact</a>
+              </li>
+              <li className="nav-item">
+                  <LogOutButton className="" />
               </li>
           </ul>
       </div>

@@ -4,13 +4,18 @@ import Modal from 'react-modal';
 import { connect } from 'react-redux';
 
 import {startRemoveList} from '../actions/lists';
+import {startAddList} from '../actions/lists';
+import {startEditFriend} from '../actions/friends';
+import {defaultPriority} from '../system/variables';
+
 
 class DeleteListOpenModalButton extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       modalOpen: props.modalOpen,
-      priority: props.priority
+      priority: props.priority,
+      friends: props.friends
     }
   }
 
@@ -24,6 +29,19 @@ class DeleteListOpenModalButton extends React.Component {
   }
 
   onYesButtonClick = () => {
+    var createdDefault = false;
+    var self = this;
+    this.state.friends.forEach(
+      function(friend) {
+        if (friend.priority == self.state.priority) {
+          createdDefault = true;
+          self.props.dispatch(startEditFriend(friend.id, {priority: defaultPriority}))
+        }
+      }
+    )
+    if (createdDefault === true) {
+      this.props.dispatch(startAddList(defaultPriority));
+    }
     this.props.dispatch(startRemoveList(this.state.priority));
     this.setState({modalOpen: false});
   }
@@ -37,13 +55,11 @@ class DeleteListOpenModalButton extends React.Component {
           closeTimeoutMS={200}
           contentLabel={'Confirm'}
         >
-          {console.log('Inside Modal. ','this.state.modalOpen = ', this.state.modalOpen)}
           <div>Are you sure you want to delete list {this.state.priority}?</div>
           <button onClick={this.onYesButtonClick}>Yes</button>
           <button onClick={this.onNoButtonClick}>No</button>
         </Modal>
 
-        {console.log('Inside DeleteListOpenModalButton ', 'this.props.modalOpen = ', this.state.modalOpen)}
         <button onClick={this.onDeleteButtonClick}>Delete</button>
 
       </div>
@@ -51,4 +67,10 @@ class DeleteListOpenModalButton extends React.Component {
   }
 }
 
-export default connect()(DeleteListOpenModalButton);
+const mapStateToProps = (state) => {
+  return {
+    friends: state.friends,
+  }
+}
+
+export default connect(mapStateToProps)(DeleteListOpenModalButton);

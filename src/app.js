@@ -4,8 +4,11 @@ import { Provider } from 'react-redux';
 
 import AppRouter, {history} from './routers/AppRouter';
 import configureStore from './store/configureStore';
-import './firebase/firebase';
+import './styles/styles.scss';
+import { firebase } from './firebase/firebase';
+import { login, logout } from './actions/auth';
 import setInitialState from './actions/setInitialState';
+
 
 
 const store = configureStore();
@@ -38,9 +41,28 @@ const renderApp = () => {
 };
 
 ReactDOM.render(loadingTemplate, output)
-store.dispatch(setInitialState()).then(
-  () => {
+
+
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    // 1. Log in user
+    store.dispatch(login(user.uid));
+    // 2. Set initial state
+    store.dispatch(setInitialState()).then(
+      () => {
+        renderApp();
+        console.log('re-rendered DOM');
+      }
+    );
+    // 3. redirect the user to the home page after login
+    if (history.location.pathname === '/login') {
+      history.push('/');
+    }
+    console.log('log in');
+  } else {
+    store.dispatch(logout());
     renderApp();
-    console.log('re-rendered DOM');
+    history.push('/login');
+    console.log('log out');
   }
-);
+})

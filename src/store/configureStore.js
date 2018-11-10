@@ -4,6 +4,7 @@ import thunk from 'redux-thunk';
 import friendsReducer from '../reducers/friends';
 import listsReducer from '../reducers/lists';
 import eventsReducer from '../reducers/events';
+import authReducer from '../reducers/auth';
 
 
 
@@ -18,7 +19,8 @@ export default () => {
       // auth: authReducer,
       friends: friendsReducer,
       lists: listsReducer,
-      events: eventsReducer
+      events: eventsReducer,
+      auth: authReducer
     }),
     composeEnhancers(applyMiddleware(thunk))
   );

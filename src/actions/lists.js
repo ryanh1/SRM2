@@ -9,7 +9,8 @@ const addList = (priority) => ({
 export const startAddList = (priority) => {
   return (dispatch, getState) => {
     console.log(`In startAddList with priority ${priority}.`)
-    return database.ref(`lists/${priority}`).set(priority).then(
+    const uid = getState().auth.uid;
+    return database.ref(`users/${uid}/lists/${priority}`).set(priority).then(
       dispatch(addList(priority))
     ).catch(
       (e) => {console.log('Error saving list: ', e)}
@@ -25,7 +26,8 @@ const removeList = (priority) => ({
 export const startRemoveList = (priority) => {
   console.log(`Inside startRemoveList with priority ${priority}`);
   return (dispatch, getState) => {
-    return database.ref(`lists/${priority}`).remove().then(
+    const uid = getState().auth.uid;
+    return database.ref(`users/${uid}/lists/${priority}`).remove().then(
       dispatch(removeList(priority))
     ).catch(
       (e) => {console.log('Error removing list: ', e)}
@@ -47,7 +49,8 @@ const setLists = (lists) => ({
 
 export const startSetLists = () => {
   return (dispatch, getState) => {
-    return database.ref(`lists`).once('value').then(
+    const uid = getState().auth.uid;
+    return database.ref(`users/${uid}/lists`).once('value').then(
       (snapshot) => {
         const lists = [];
         snapshot.forEach(

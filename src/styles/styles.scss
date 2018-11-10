@@ -1,0 +1,25 @@
+$dark: #343a40;
+$textWhite: #fff;
+
+.center-vertically {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  width: 100vw;
+}
+
+.button-link {
+  background-color: $dark;
+  color: rgba(255,255,255,.5);
+  border: none;
+  display: inline-block;
+  line-height: 1;
+  text-decoration: none;
+  margin-top: 11px;
+  font-family: "Helvetica Neue";
+}
+
+.dark-background {
+  background: $dark
+}

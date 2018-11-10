@@ -13,6 +13,9 @@ firebase.initializeApp(config);
 
 const database = firebase.database();
 
+// Implement authentication
+const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
+
 // Test firebase
 firebase.database().ref('test').set('This is a test').then(
   () => {console.log('Wrote to database')}
@@ -20,4 +23,4 @@ firebase.database().ref('test').set('This is a test').then(
   (e) => {console.log('Error fetching data: ', e)}
 );
 
-export {firebase, database as default};
+export {firebase, googleAuthProvider, database as default};

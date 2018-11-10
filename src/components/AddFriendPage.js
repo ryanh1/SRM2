@@ -6,28 +6,58 @@ import {history} from '../routers/AppRouter';
 
 import AddFriendForm from './AddFriendForm.js';
 import { startAddFriend, startEditFriend } from '../actions/friends'
-import { startAddList, startEditList } from '../actions/lists'
+import { startAddList, startEditList, startRemoveList } from '../actions/lists'
 
-const AddFriendPage = (props) => (
-  <AddFriendForm
-    friend={props.friend}
-    onSubmit={
-      (props.function=="edit") ?
-        (friend) => {
-          console.log('Passed in props.dispatch(startEditFriend(friend)) to onSubmit');
-          props.dispatch(startEditFriend(friend.id, {...friend}));
-          props.dispatch(startAddList(friend.priority));
-          history.push('/');
-        }
-        :
-        (friend) => {
-          console.log('Passed in props.dispatch(startAddFriend(friend)) to onSubmit');
-          props.dispatch(startAddFriend(friend));
-          props.dispatch(startAddList(friend.priority));
-          history.push('/');
-        }
+class AddFriendPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      friends: props.friends
     }
-  />
-);
+  }
 
-export default connect()(AddFriendPage);
+  render() {
+    return (
+      <AddFriendForm
+        friend={this.props.friend}
+        onSubmit={
+          (this.props.function=="edit") ?
+            (friend) => {
+              console.log('Passed in this.props.dispatch(startEditFriend(friend)) to onSubmit');
+              this.props.dispatch(startEditFriend(friend.id, {...friend}));
+              this.props.dispatch(startAddList(friend.priority));
+
+              var originalPriority = this.props.friend.priority;
+              var countInListBeforeDelete = 0;
+              this.state.friends.forEach(
+                function(friend) {
+                  if (friend.priority == originalPriority) {
+                    countInListBeforeDelete += 1;
+                  }
+                }
+              )
+              if (countInListBeforeDelete === 1) {
+                this.props.dispatch(startRemoveList(originalPriority));
+              }
+              history.push('/');
+            }
+            :
+            (friend) => {
+              console.log('Passed in this.props.dispatch(startAddFriend(friend)) to onSubmit');
+              this.props.dispatch(startAddFriend(friend));
+              this.props.dispatch(startAddList(friend.priority));
+              history.push('/');
+            }
+        }
+      />
+    )
+  }
+}
+
+const mapStateToProps = (state) => {
+  return {
+    friends: state.friends,
+  }
+}
+
+export default connect(mapStateToProps)(AddFriendPage);

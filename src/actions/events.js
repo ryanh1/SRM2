@@ -14,7 +14,8 @@ export const startAddEvent = (event) => {
       ...event
     }
     console.log(`In startAddEvent. with ${JSON.stringify(event)}`);
-    return database.ref(`events/${eventFull.id}`).set(eventFull).then(
+    const uid = getState().auth.uid;
+    return database.ref(`users/${uid}/events/${eventFull.id}`).set(eventFull).then(
       dispatch(addEvent(eventFull))
     ).catch( (e) => {
       (e) => {console.log('Error saving event: ', e)}
@@ -30,7 +31,8 @@ const removeEvent = (id) => ({
 export const startRemoveEvent = (id) => {
   console.log(`Inside startRemoveEvent with id ${id}`);
   return (dispatch, getState) => {
-    return database.ref(`events/${id}`).remove().then(
+    const uid = getState().auth.uid;
+    return database.ref(`users/${uid}/events/${id}`).remove().then(
       dispatch(removeEvent(id))
     ).catch(
       (e) => {console.log('Error deleting event: ', e)}
@@ -46,7 +48,8 @@ export const editEvent = (id, updates) => ({
 
 export const startEditEvent = (id, updates) => {
   return (dispatch, getState) => {
-    database.ref(`events/${id}`).update(updates).then(() => {
+    const uid = getState().auth.uid;
+    database.ref(`users/${uid}/events/${id}`).update(updates).then(() => {
       dispatch(editEvents(id, updates));
     });
   };
@@ -59,7 +62,8 @@ const setEvents = (events) => ({
 
 export const startSetEvents = () => {
   return (dispatch, getState) => {
-    return database.ref(`events`).once('value').then(
+    const uid = getState().auth.uid;
+    return database.ref(`users/${uid}/events`).once('value').then(
       (snapshot) => {
         const events = [];
         snapshot.forEach(
