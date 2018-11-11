@@ -37,11 +37,14 @@ class DeleteFriendOpenModalButton extends React.Component {
           onRequestClose={this.onNoButtonClick}
           closeTimeoutMS={200}
           contentLabel={'Confirm'}
+          className="bg-light modal border border-dark"
         >
           {console.log('Inside Modal. ','this.state.modalOpen = ', this.state.modalOpen)}
           <div>Are you sure you want to delete friend: {this.state.friend.firstName} {this.state.friend.lastName}?</div>
-          <button onClick={this.onYesButtonClick}>Yes</button>
-          <button onClick={this.onNoButtonClick}>No</button>
+          <div className="mt-3">
+            <button onClick={this.onYesButtonClick}>Yes</button>
+            <button onClick={this.onNoButtonClick}>No</button>
+          </div>
         </Modal>
 
         {console.log('Inside DeleteFriendOpenModalButton ', 'this.props.modalOpen = ', this.state.modalOpen)}

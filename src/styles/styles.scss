@@ -9,6 +9,16 @@ $textWhite: #fff;
   width: 100vw;
 }
 
+.modal {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 33vh;
+  justify-content: center;
+  width: 33vw;
+  margin: auto;
+}
+
 .center-horrizontally {
   display: flex;
   justify-content: center;
@@ -24,6 +34,10 @@ $textWhite: #fff;
   text-decoration: none;
   margin-top: 11px;
   font-family: "Helvetica Neue";
+}
+
+.button-link:hover {
+  color: rgba(255,255,255,.75);
 }
 
 .dark-background {
