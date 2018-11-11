@@ -27,6 +27,11 @@ class AddFriendPage extends React.Component {
           (this.props.function=="edit") ?
             (friend) => {
 
+              // -1. Set original friend variables
+              var self = this;
+              var originalOrderInList = this.props.friend.orderInList;
+              var originalFriendID = this.props.friend.id;
+
               // 0. Add friend to last slot in new list
               var newPriority = friend.priority;
               var newList = selectFriendsByPriority(this.state.friends, newPriority);
@@ -51,9 +56,28 @@ class AddFriendPage extends React.Component {
               )
               if (countInListBeforeDelete === 1) {
                 this.props.dispatch(startRemoveList(originalPriority));
+              } else {
+                // 4. If the old list is not empty, decrementOrderOfHigherFriends
+                var oldList = selectFriendsByPriority(this.state.friends, originalPriority);
+                console.log('started to decrementOrderOfHigherFriends');
+                console.log('orderInList: ', originalOrderInList);
+                oldList.forEach(
+                  function(friend) {
+                    console.log('**1**');
+                    if (friend.orderInList > originalOrderInList) {
+                      console.log('**2**');
+                      if (friend.id != originalFriendID) {
+                        console.log('**3**');
+                        friend.orderInList -= 1;
+                        self.props.dispatch(startEditFriend(friend.id, friend));
+                      }
+                    }
+                  }
+                )
+
               }
 
-              // 4. Redirect user to home screen
+              // 5. Redirect user to home screen
               history.push('/');
             }
             :

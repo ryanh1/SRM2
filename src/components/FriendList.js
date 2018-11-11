@@ -42,7 +42,10 @@ class FriendList extends React.Component {
 
   onCheckButton = (friend) => {
     // 0. Update orderInList and priority values
+    var self = this;
     var originalPriority = friend.priority;
+    var originalOrderInList = friend.orderInList;
+    var originalFriendID = friend.id;
     var newPriority = defaultPriority;
     var newList = selectFriendsByPriority(this.props.friends, defaultPriority);
     friend.orderInList = newList.length + 1;
@@ -60,13 +63,24 @@ class FriendList extends React.Component {
       function(friend) {
         if (friend.priority == originalPriority) {
           countInListBeforeDelete += 1;
-          console.log('printing: ', JSON.stringify(friend));
         }
       }
     )
     console.log('countInListBeforeDelete: ', JSON.stringify(countInListBeforeDelete));
     if (countInListBeforeDelete === 0 ) {
       this.props.dispatch(startRemoveList(originalPriority));
+    } else {
+      // 4. If the old list is not empty, decrementOrderOfHigherFriends
+      this.state.filteredFriends.forEach(
+        function(friend) {
+          if (friend.orderInList > originalOrderInList) {
+            if (friend.id != originalFriendID) {
+              friend.orderInList -= 1;
+              self.props.dispatch(startEditFriend(friend.id, friend));
+            }
+          }
+        }
+      )
     }
   }
 
