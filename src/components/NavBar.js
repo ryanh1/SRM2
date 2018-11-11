@@ -13,7 +13,10 @@ const NavBar = () => (
                 <Link className="nav-link" to="/">Home</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link"to="/managelists">Manage lists</Link>
+                <Link className="nav-link" to="/managelists" >Manage lists</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/account" >Account</Link>
               </li>
               <li className="nav-item">
                   <LogOutButton className="" />

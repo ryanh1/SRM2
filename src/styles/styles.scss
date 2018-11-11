@@ -9,6 +9,12 @@ $textWhite: #fff;
   width: 100vw;
 }
 
+.center-horrizontally {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+}
+
 .button-link {
   background-color: $dark;
   color: rgba(255,255,255,.5);

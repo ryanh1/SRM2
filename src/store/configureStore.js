@@ -5,7 +5,7 @@ import friendsReducer from '../reducers/friends';
 import listsReducer from '../reducers/lists';
 import eventsReducer from '../reducers/events';
 import authReducer from '../reducers/auth';
-
+import accountReducer from '../reducers/account';
 
 
 
@@ -16,11 +16,11 @@ export default () => {
   const store = createStore(
     combineReducers({
       // filters: filtersReducer,
-      // auth: authReducer,
       friends: friendsReducer,
       lists: listsReducer,
       events: eventsReducer,
-      auth: authReducer
+      auth: authReducer,
+      account: accountReducer
     }),
     composeEnhancers(applyMiddleware(thunk))
   );

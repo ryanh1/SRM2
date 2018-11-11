@@ -17,10 +17,10 @@ const database = firebase.database();
 const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 
 // Test firebase
-firebase.database().ref('test').set('This is a test').then(
-  () => {console.log('Wrote to database')}
-).catch(
-  (e) => {console.log('Error fetching data: ', e)}
-);
+// firebase.database().ref('test').set('This is a test').then(
+//   () => {console.log('Wrote to database')}
+// ).catch(
+//   (e) => {console.log('Error fetching data: ', e)}
+// );
 
 export {firebase, googleAuthProvider, database as default};
