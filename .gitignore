@@ -1,8 +1,5 @@
 node_modules/
-<<<<<<< HEAD
 src/private/private.js
-=======
->>>>>>> production
 public/dist/bundle.js
 public/bundle.js
 public/bundle.js.map
