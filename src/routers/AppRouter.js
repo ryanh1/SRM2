@@ -4,7 +4,7 @@ import { Router, Route, Switch, Link, NavLink } from 'react-router-dom';
 import FriendKanban from '../components/FriendKanban';
 import EditFriendPage from '../components/EditFriendPage';
 import ManageLists from '../components/ManageLists';
-import LoginPage from '../components/LoginPage';
+import LoginPage from '../components/LogInPage';
 import EditAccountForm from '../components/EditAccountForm';
 
 

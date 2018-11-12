@@ -1,5 +1,5 @@
 import * as firebase from 'firebase';
-import {firebaseConfiguration} from '../../private';
+import {firebaseConfiguration} from '../private';
 
 // Initialize Firebase
 
