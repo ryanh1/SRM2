@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {connect} from 'react-redux'
 
-import Event from './event.js';
+import Event from './Event.js';
 import AddEventPage from './AddEventPage';
 import selectEventsByFriendID from '../selectors/selectEventsByFriendID';
 

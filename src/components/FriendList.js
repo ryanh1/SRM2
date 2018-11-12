@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {connect} from 'react-redux';
 
-import FriendCard from './friendcard.js';
+import FriendCard from './FriendCard.js';
 import selectFriendsByPriority from '../selectors/selectFriendsByPriority';
 import filterOutFriendById from '../selectors/filterOutFriendById';
 import sortFriendsInList from '../selectors/sortFriendsInList';
