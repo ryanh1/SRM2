@@ -8,6 +8,8 @@ import './styles/styles.scss';
 import { firebase } from './firebase/firebase';
 import { login, logout } from './actions/auth';
 import setInitialState from './actions/setInitialState';
+import LoadingPage from './components/LoadingPage';
+
 
 
 
@@ -20,9 +22,9 @@ store.subscribe(() => {
   console.log(store.getState());
 });
 
-const loadingTemplate = (
-  <div>Connecting to database</div>
-);
+// const loadingTemplate = (
+//   <div>Connecting to database</div>
+// );
 
 const actualTemplate = (
   <Provider store={store}>
@@ -40,7 +42,7 @@ const renderApp = () => {
   }
 };
 
-ReactDOM.render(loadingTemplate, output)
+ReactDOM.render(LoadingPage, output)
 
 
 firebase.auth().onAuthStateChanged((user) => {

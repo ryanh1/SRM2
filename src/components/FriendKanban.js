@@ -8,7 +8,7 @@ import AddFriendPage from './AddFriendPage';
 
 const FriendKanban = (props) => (
   <div className="p-4">
-    <h1 className="text-center mb-4">See your friends in different lists</h1>
+    <h1 className="text-center mb-4">Your friends</h1>
 
     <div className="d-flex justify-content-between">
       {
@@ -28,7 +28,7 @@ const FriendKanban = (props) => (
       }
     </div>
     <div className="text-center border border-secondary mt-5">
-      <h2 className="m-2">Add a new friend.</h2>
+      <h2 className="m-2">Add a new friend</h2>
       <AddFriendPage function="add"/>
     </div>
   </div>

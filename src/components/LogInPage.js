@@ -1,9 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { startLogin } from '../actions/auth';
+// import Landing from './Landing';
+
 
 export const LoginPage = ({ startLogin }) => {
   return (
+    <div>
+      {/* <div>
+        <Landing />
+      </div> */}
       <div className="text-center center-vertically">
         <button
           onClick={startLogin}
@@ -11,6 +17,8 @@ export const LoginPage = ({ startLogin }) => {
           >Login with Google
         </button>
       </div>
+    </div>
+
   )
 };
 

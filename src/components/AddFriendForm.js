@@ -78,7 +78,7 @@ class AddFriendForm extends React.Component {
           {this.state.id === '' ? <span></span> : <span>List: </span>}
           <input
             type="number"
-            placeholder={!!this.props.friend ? this.state.priority: "priority"}
+            placeholder={!!this.props.friend ? this.state.priority: "List number"}
             value={this.state.priority}
             onChange={this.onPriorityChange}
           />
