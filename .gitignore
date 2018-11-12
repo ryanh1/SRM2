@@ -1,5 +1,4 @@
 node_modules/
-src/private/private.js
 public/dist/bundle.js
 public/bundle.js
 public/bundle.js.map
