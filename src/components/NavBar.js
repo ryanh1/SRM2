@@ -10,13 +10,13 @@ const NavBar = () => (
       <Link className="navbar-brand" to="/">SRM2</Link>
       <ul className="navbar-nav">
           <li className="nav-item">
-            <NavLink className="nav-link" to="/" exact="true">Home</NavLink>
+            <NavLink className="nav-link" to="/" exact={true}>Home</NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" to="/managelists" exact="true">Manage lists</NavLink>
+            <NavLink className="nav-link" to="/managelists" exact={true}>Manage lists</NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" to="/account" exact="true">Account</NavLink>
+            <NavLink className="nav-link" to="/account" exact={true} >Account</NavLink>
           </li>
           <li className="nav-item">
             <LogOutButton className="" />

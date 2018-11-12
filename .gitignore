@@ -1,4 +1,7 @@
 node_modules/
 private.js
 public/dist/bundle.js
-private.js
+public/bundle.js
+public/bundle.js.map
+public/styles.js
+public/styles.js.map

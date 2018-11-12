@@ -1,7 +1,12 @@
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+// const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-module.exports = () => {
+module.exports = (env) => {
+
+  const isProduction = env === 'production';
+  // const CSSExtract = new ExtractTextPlugin('styles.css');
+  console.log('env', env)
+
 
   return {
     entry: './src/app.js',
@@ -23,6 +28,7 @@ module.exports = () => {
         ]
       }]
     },
+    devtool: isProduction ? 'source-map' : 'cheap-module-eval-source-map',
     devServer: {
       contentBase: path.join(__dirname, 'public'),
       historyApiFallback: true,
