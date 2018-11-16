@@ -15,10 +15,10 @@
     "build:prod": "webpack -p --env production",
     "start": "node server/server.js",
     "heroku-postbuild": "yarn run build:prod",
-    "github-0": "git checkout github",
-    "github-1": "git merge master",
-    "github-2": "git rm --cached src/private/private.js",
-    "github-3": "echo src/private/private.js >> .gitignore"
+    "github-1": "git checkout github",
+    "github-2": "git merge master",
+    "github-3": "git rm --cached src/private/private.js",
+    "github-4": "echo src/private/private.js >> .gitignore"
   },
   "dependencies": {
     "babel-cli": "^6.26.0",
