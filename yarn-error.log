@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarn github-1
+  /usr/local/bin/node /usr/local/bin/yarn github-9
 
 PATH: 
   /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/Users/ryanhollander/mongo/bin:/Users/ryanhollander/mongo/bin
@@ -36,7 +36,7 @@ npm manifest:
       "github-3": "git rm --cached src/private/private.js",
       "github-4": "echo src/private/private.js >> .gitignore",
       "github-5": "git add -A",
-      "github-6": "git commit",
+      "github-6": "git commit -m 'auto'",
       "github-7": "git push",
       "github-8": "git checkout master",
       "github-9": "git add src/private/private.js",
@@ -5245,7 +5245,7 @@ Lockfile:
       window-size "0.1.0"
 
 Trace: 
-  SyntaxError: /Users/ryanhollander/Documents/Coding/udemy_react_course/SRM2/package.json: Unexpected token } in JSON at position 1045
+  SyntaxError: /Users/ryanhollander/Documents/Coding/udemy_react_course/SRM2/package.json: Unexpected token } in JSON at position 1055
       at JSON.parse (<anonymous>)
       at /usr/local/lib/node_modules/yarn/lib/cli.js:770:59
       at Generator.next (<anonymous>)

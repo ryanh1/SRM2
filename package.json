@@ -20,13 +20,13 @@
     "github-3": "git rm --cached src/private/private.js",
     "github-4": "echo src/private/private.js >> .gitignore",
     "github-5": "git add -A",
-    "github-6": "git commit",
+    "github-6": "git commit -m 'update github'",
     "github-7": "git push",
     "github-8": "git checkout master",
-    "github-9": "git add src/private/private.js",
+    "github-9": "git add src/private/private.js -f",
     "github-10": "// delete the private line",
     "github-11": "git add -A",
-    "github-12": "git commit",
+    "github-12": "git commit -m 'update master'",
     "github-13": "git push heroku master"
   },
   "dependencies": {
