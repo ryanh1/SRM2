@@ -27,7 +27,7 @@
     "github-10": "// delete the private line",
     "github-11": "git add -A",
     "github-12": "git commit",
-    "github-13": "git push heroku master",
+    "github-13": "git push heroku master"
   },
   "dependencies": {
     "babel-cli": "^6.26.0",
