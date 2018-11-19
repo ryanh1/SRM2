@@ -4,15 +4,13 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
 import FriendList from './FriendList';
-import AddFriendPage from './AddFriendPage';
-import LocationsSelector from './LocationsSelector';
+import TopPanel from './TopPanel';
 
 
 const FriendKanban = (props) => (
   <div className="p-4">
     <h1 className="text-center mb-4">Your friends</h1>
-    <LocationsSelector />
-
+    <TopPanel />
     <div className="d-flex justify-content-between">
       {
         (!props.lists || props.lists.length === 0) ? (
@@ -29,10 +27,6 @@ const FriendKanban = (props) => (
           })
         )
       }
-    </div>
-    <div className="text-center border border-secondary mt-5">
-      <h2 className="m-2">Add a new friend</h2>
-      <AddFriendPage function="add"/>
     </div>
   </div>
 );
