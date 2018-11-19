@@ -26,7 +26,6 @@ const eventsReducer = (
         }
       })
     case 'SET_EVENTS':
-      console.log('Inside set_events reducer');
       return action.events;
     // case 'EDIT_EVENT':
     //   return state.map( (event) => {

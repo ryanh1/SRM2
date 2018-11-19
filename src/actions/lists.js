@@ -1,5 +1,7 @@
 import uuid from 'uuid';
 import database from '../firebase/firebase';
+import extractListsFromFriends from '../selectors/extractListsFromFriends';
+
 
 const addList = (priority) => ({
   type: 'ADD_LIST',

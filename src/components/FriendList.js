@@ -6,6 +6,7 @@ import FriendCard from './FriendCard.js';
 import selectFriendsByPriority from '../selectors/selectFriendsByPriority';
 import filterOutFriendById from '../selectors/filterOutFriendById';
 import sortFriendsInList from '../selectors/sortFriendsInList';
+import selectFriendsBySelectedLocations from '../selectors/selectFriendsBySelectedLocations';
 
 // import DeleteListButton from './deleteListButton';
 import DeleteListOpenModalButton from './DeleteListOpenModalButton';
@@ -115,10 +116,10 @@ class FriendList extends React.Component {
 
           <div>
             {
-              this.state.filteredFriends.length === 0 ? (
+              selectFriendsBySelectedLocations(this.state.filteredFriends, this.props.locations).length === 0 ? (
                 <span>No friends.</span>
               ) : (
-                this.state.filteredFriends.sort(sortFriendsInList).map( (friend) => {
+                selectFriendsBySelectedLocations(this.state.filteredFriends, this.props.locations).sort(sortFriendsInList).map( (friend) => {
                   return (
                     <div key={friend.id}>
                       <FriendCard
@@ -144,7 +145,8 @@ class FriendList extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    friends: state.friends
+    friends: state.friends,
+    locations: state.locations
   }
 }
 

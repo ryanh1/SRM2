@@ -18,7 +18,6 @@ const listsReducer = (
         return priority != action.priority
       })
     case 'SET_LISTS':
-      console.log('Inside set_lists reducer');
       return action.lists;
     // case 'EDIT_LIST':
     //   return state.map( (list) => {

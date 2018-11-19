@@ -16,7 +16,8 @@ class AddFriendForm extends React.Component {
       priority: props.friend ? props.friend.priority: '',
       orderInList: props.friend ? props.friend.orderInList: '',
       events: props.friend ? props.friend.events: [],
-      todo: props.friend? props.friend.todo: ''
+      todo: props.friend ? props.friend.todo: '',
+      location: props.friend ? props.friend.location: '',
     }
   }
 
@@ -45,6 +46,12 @@ class AddFriendForm extends React.Component {
     this.setState(() => ({todo, orderInList}));
   }
 
+  onLocationChange = (e) => {
+    const location = e.target.value;
+    const orderInList = selectFriendsByPriority(this.props.friends, this.state.priority).length + 1;
+    this.setState(() => ({location, orderInList}));
+  }
+
   onSubmit = (e) => {
     e.preventDefault();
     console.log('Called onSubmit function within AddFriendForm');
@@ -54,7 +61,8 @@ class AddFriendForm extends React.Component {
       lastName: this.state.lastName,
       priority: this.state.priority,
       orderInList: this.state.orderInList,
-      todo: this.state.todo
+      todo: this.state.todo,
+      location: this.state.location
     })
   }
 
@@ -81,6 +89,13 @@ class AddFriendForm extends React.Component {
             placeholder={!!this.props.friend ? this.state.priority: "List number"}
             value={this.state.priority}
             onChange={this.onPriorityChange}
+          />
+          {this.state.id === '' ? <span></span> : <span>Location: </span>}
+          <input
+            type="text"
+            placeholder={!!this.props.friend ? this.state.location : "Location"}
+            value={this.state.location}
+            onChange={this.onLocationChange}
           />
           <input
             type="text"

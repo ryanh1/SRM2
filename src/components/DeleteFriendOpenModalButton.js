@@ -4,6 +4,10 @@ import Modal from 'react-modal';
 import { connect } from 'react-redux';
 
 import {startRemoveFriend} from '../actions/friends';
+// import {startRemoveList} from '../actions/lists';
+import {startRemoveLocation} from '../actions/locations';
+import numberOfFriendsWithLocation from '../selectors/numberOfFriendsWithLocation';
+import numberOfFriendsWithPriority from '../selectors/numberOfFriendsWithPriority';
 
 class DeleteFriendOpenModalButton extends React.Component {
   constructor(props) {
@@ -24,7 +28,21 @@ class DeleteFriendOpenModalButton extends React.Component {
   }
 
   onYesButtonClick = () => {
+    // 1. If friend was the only one with this location, delete location
+    if (numberOfFriendsWithLocation(this.props.friends, this.state.friend.location) <= 1) {
+      this.props.dispatch(startRemoveLocation(this.state.friend.location));
+    }
+
+    // 2. If friend was the only one with this list, delete lists
+    // if (numberOfFriendsWithPriority(this.props.friends, this.state.friend.priority) <= 1) {
+    //   this.props.dispatch(startRemoveList(this.state.friend.priority));
+    // }
+
+    // 3. Remove friend
     this.props.dispatch(startRemoveFriend(this.state.friend.id));
+
+
+    // 4. Other
     this.setState({modalOpen: false});
     this.props.history.push('/');
   }
@@ -55,4 +73,10 @@ class DeleteFriendOpenModalButton extends React.Component {
   }
 }
 
-export default connect()(DeleteFriendOpenModalButton);
+const mapStateToProps = (state) => {
+    return {
+      friends: state.friends
+    };
+};
+
+export default connect(mapStateToProps)(DeleteFriendOpenModalButton);

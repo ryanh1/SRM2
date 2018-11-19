@@ -42,7 +42,9 @@ class DeleteListOpenModalButton extends React.Component {
     if (createdDefault === true) {
       this.props.dispatch(startAddList(defaultPriority));
     }
-    this.props.dispatch(startRemoveList(this.state.priority));
+    if (this.state.priority != defaultPriority) {
+      this.props.dispatch(startRemoveList(this.state.priority));
+    }
     this.setState({modalOpen: false});
   }
 

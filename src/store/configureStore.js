@@ -6,6 +6,7 @@ import listsReducer from '../reducers/lists';
 import eventsReducer from '../reducers/events';
 import authReducer from '../reducers/auth';
 import accountReducer from '../reducers/account';
+import locationsReducer from '../reducers/locations';
 
 
 
@@ -20,7 +21,8 @@ export default () => {
       lists: listsReducer,
       events: eventsReducer,
       auth: authReducer,
-      account: accountReducer
+      account: accountReducer,
+      locations: locationsReducer
     }),
     composeEnhancers(applyMiddleware(thunk))
   );
