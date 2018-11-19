@@ -3,11 +3,16 @@ import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import {history} from '../routers/AppRouter';
 
-
 import AddFriendForm from './AddFriendForm.js';
 import { startAddFriend, startEditFriend } from '../actions/friends'
 import { startAddList, startEditList, startRemoveList } from '../actions/lists'
+import { startAddLocation, startRemoveLocation } from '../actions/locations'
 import selectFriendsByPriority from '../selectors/selectFriendsByPriority';
+import extractLocationsFromFriends from '../selectors/extractLocationsFromFriends';
+import numberOfFriendsWithLocation from '../selectors/numberOfFriendsWithLocation';
+import numberOfFriendsWithPriority from '../selectors/numberOfFriendsWithPriority';
+import numberOfListsWithPriority from '../selectors/numberOfListsWithPriority';
+
 
 class AddFriendPage extends React.Component {
   constructor(props) {
@@ -31,6 +36,10 @@ class AddFriendPage extends React.Component {
               var self = this;
               var originalOrderInList = this.props.friend.orderInList;
               var originalFriendID = this.props.friend.id;
+              var originalLocation = this.props.friend.location;
+              var numberOfFriendsWithOriginalLocation = numberOfFriendsWithLocation(this.state.friends, originalLocation);
+              var numberOfFriendsWithNewLocation = numberOfFriendsWithLocation(this.state.friends, friend.location);
+
 
               // 0. Add friend to last slot in new list
               var newPriority = friend.priority;
@@ -42,7 +51,9 @@ class AddFriendPage extends React.Component {
               this.props.dispatch(startEditFriend(friend.id, {...friend}));
 
               // 2. Add a new list if necessary
-              this.props.dispatch(startAddList(friend.priority));
+              if (numberOfListsWithPriority(props.lists, newPriority) === 0) {
+                this.props.dispatch(startAddList(newPriority));
+              }
 
               // 3. If the old list is empty, delete it.
               var originalPriority = this.props.friend.priority;
@@ -75,17 +86,46 @@ class AddFriendPage extends React.Component {
                   }
                 )
 
+                // 5. If the location was changed:
+                if (originalLocation != friend.location) {
+                  console.log('**4**');
+                  console.log('numberOfFriendsWithOriginalLocation', numberOfFriendsWithOriginalLocation);
+                  console.log('numberOfFriendsWithNewLocation', numberOfFriendsWithNewLocation);
+                  // 5A. If no other friends have the old location, delete the old location
+                  if (numberOfFriendsWithOriginalLocation <= 1) {
+                    console.log('**5**');
+                    self.props.dispatch(startRemoveLocation(originalLocation));
+                  }
+
+                  // 5B. If no other friends have the new location, add the new location
+                  if (numberOfFriendsWithNewLocation <= 0) {
+                    console.log('**6**');
+                    self.props.dispatch(startAddLocation(friend.location));
+                  }
+                }
+
+
+
               }
 
-              // 5. Redirect user to home screen
+              // 6. Redirect user to home screen
               history.push('/');
             }
             :
             // Otherwise, if we're adding a friend...
             (friend) => {
               console.log('Passed in this.props.dispatch(startAddFriend(friend)) to onSubmit');
+              var self = this;
+              var numFriendsWithNewLocation = numberOfFriendsWithLocation(this.state.friends, friend.location);
+              console.log('numFriendsWithNewLocation', numFriendsWithNewLocation);
+              if (numFriendsWithNewLocation === 0) {
+                self.props.dispatch(startAddLocation(friend.location));
+              }
               this.props.dispatch(startAddFriend(friend));
-              this.props.dispatch(startAddList(friend.priority));
+              if (numberOfFriendsWithPriority(this.props.friends, friend.priority) === 0) {
+                console.log('add list');
+                this.props.dispatch(startAddList(friend.priority));
+              }
               history.push('/');
             }
         }

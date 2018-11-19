@@ -10,7 +10,6 @@ const friendsReducer = (
         action.friend
       ]
     case 'REMOVE_FRIEND':
-      console.log(`Inside friends reducer`);
       return state.filter( ({id}) => {
         return id != action.id
       })
@@ -27,7 +26,6 @@ const friendsReducer = (
         }
       })
     case 'SET_FRIENDS':
-      console.log('Inside set_friends reducer');
       return action.friends;
     default:
       return state;

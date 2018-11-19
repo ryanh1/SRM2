@@ -5,10 +5,13 @@ import {Link} from 'react-router-dom';
 
 import FriendList from './FriendList';
 import AddFriendPage from './AddFriendPage';
+import LocationsSelector from './LocationsSelector';
+
 
 const FriendKanban = (props) => (
   <div className="p-4">
     <h1 className="text-center mb-4">Your friends</h1>
+    <LocationsSelector />
 
     <div className="d-flex justify-content-between">
       {
