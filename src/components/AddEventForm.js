@@ -49,7 +49,7 @@ export default class AddEventForm extends React.Component {
             value={this.state.note}
             onChange={this.onNoteChange}
           />
-          <button className="ml-3">Submit</button>
+          <button className="ml-3">Save note</button>
         </form>
       </div>
     )

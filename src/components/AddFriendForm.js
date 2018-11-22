@@ -57,12 +57,12 @@ class AddFriendForm extends React.Component {
     console.log('Called onSubmit function within AddFriendForm');
     this.props.onSubmit({
       id: this.state.id,
-      firstName: this.state.firstName,
-      lastName: this.state.lastName,
-      priority: this.state.priority,
+      firstName: this.state.firstName == '' ? 'First' : this.state.firstName,
+      lastName: this.state.lastName == '' ? 'Last' : this.state.lastName,
+      priority: this.state.priority == '' ? 0 : this.state.priority,
       orderInList: this.state.orderInList,
       todo: this.state.todo,
-      location: this.state.location
+      location: this.state.location == '' ? 'Unknown' : this.state.location
     })
   }
 
@@ -83,20 +83,21 @@ class AddFriendForm extends React.Component {
             value={this.state.lastName}
             onChange={this.onLastNameChange}
           />
-          {this.state.id === '' ? <span></span> : <span>List: </span>}
+          {this.state.id === '' ? <span></span> : <span className="ml-1">List: </span>}
           <input
             type="number"
             placeholder={!!this.props.friend ? this.state.priority: "List number"}
             value={this.state.priority}
             onChange={this.onPriorityChange}
           />
-          {this.state.id === '' ? <span></span> : <span>Location: </span>}
+          {this.state.id === '' ? <span></span> : <span className="ml-1">Location: </span>}
           <input
             type="text"
             placeholder={!!this.props.friend ? this.state.location : "Location"}
             value={this.state.location}
             onChange={this.onLocationChange}
           />
+          {this.state.id === '' ? <span></span> : <span className="ml-1">To do: </span>}
           <input
             type="text"
             placeholder={!!this.props.friend ? this.state.todo : "To do"}

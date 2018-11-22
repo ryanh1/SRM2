@@ -41,7 +41,6 @@ class DeleteFriendOpenModalButton extends React.Component {
     // 3. Remove friend
     this.props.dispatch(startRemoveFriend(this.state.friend.id));
 
-
     // 4. Other
     this.setState({modalOpen: false});
     this.props.history.push('/');
@@ -58,7 +57,7 @@ class DeleteFriendOpenModalButton extends React.Component {
           className="bg-light modal border border-dark"
         >
           {console.log('Inside Modal. ','this.state.modalOpen = ', this.state.modalOpen)}
-          <div>Are you sure you want to delete friend: {this.state.friend.firstName} {this.state.friend.lastName}?</div>
+          <div className="pl-3 pr-3">Are you sure you want to delete friend: {this.state.friend.firstName} {this.state.friend.lastName}?</div>
           <div className="mt-3">
             <button onClick={this.onYesButtonClick}>Yes</button>
             <button onClick={this.onNoButtonClick}>No</button>

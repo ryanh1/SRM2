@@ -1,5 +1,6 @@
 $dark: #343a40;
 $textWhite: #fff;
+$baige: #f1e8ac;
 
 .center-vertically {
   align-items: center;
@@ -59,4 +60,24 @@ $textWhite: #fff;
 
 .vertical-splitter {
   border-left: $dark;
+}
+
+.noun-image {
+  height: 150px;
+  width: 150px;
+}
+
+.noun-text {
+  height: 250px;
+  width: 250px;
+}
+
+.baige-background {
+  background: $baige;
+  color: $baige;
+}
+
+.message-box {
+  height: 100px;
+  width: 100px
 }

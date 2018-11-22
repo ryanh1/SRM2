@@ -51,25 +51,26 @@ class AddFriendPage extends React.Component {
               this.props.dispatch(startEditFriend(friend.id, {...friend}));
 
               // 2. Add a new list if necessary
-              if (numberOfListsWithPriority(props.lists, newPriority) === 0) {
-                this.props.dispatch(startAddList(newPriority));
+              console.log('numberOfListsWithPriority: ', numberOfListsWithPriority(self.props.lists, newPriority));
+              if (numberOfListsWithPriority(self.props.lists, newPriority) === 0) {
+                self.props.dispatch(startAddList(newPriority));
               }
 
               // 3. If the old list is empty, delete it.
               var originalPriority = this.props.friend.priority;
               var countInListBeforeDelete = 0;
-              this.state.friends.forEach(
+              self.state.friends.forEach(
                 function(friend) {
                   if (friend.priority == originalPriority) {
                     countInListBeforeDelete += 1;
                   }
                 }
               )
-              if (countInListBeforeDelete === 1) {
-                this.props.dispatch(startRemoveList(originalPriority));
+              if (countInListBeforeDelete === 1 && originalPriority != newPriority) {
+                self.props.dispatch(startRemoveList(originalPriority));
               } else {
                 // 4. If the old list is not empty, decrementOrderOfHigherFriends
-                var oldList = selectFriendsByPriority(this.state.friends, originalPriority);
+                var oldList = selectFriendsByPriority(self.state.friends, originalPriority);
                 console.log('started to decrementOrderOfHigherFriends');
                 console.log('orderInList: ', originalOrderInList);
                 oldList.forEach(
@@ -116,15 +117,16 @@ class AddFriendPage extends React.Component {
             (friend) => {
               console.log('Passed in this.props.dispatch(startAddFriend(friend)) to onSubmit');
               var self = this;
-              var numFriendsWithNewLocation = numberOfFriendsWithLocation(this.state.friends, friend.location);
+              var numFriendsWithNewLocation = numberOfFriendsWithLocation(self.state.friends, friend.location);
               console.log('numFriendsWithNewLocation', numFriendsWithNewLocation);
               if (numFriendsWithNewLocation === 0) {
                 self.props.dispatch(startAddLocation(friend.location));
               }
-              this.props.dispatch(startAddFriend(friend));
-              if (numberOfFriendsWithPriority(this.props.friends, friend.priority) === 0) {
+              self.props.dispatch(startAddFriend(friend));
+              console.log('numberOfListsWithPriority: ', numberOfFriendsWithPriority(self.props.friends, friend.priority));
+              if (numberOfFriendsWithPriority(self.props.friends, friend.priority) === 0) {
                 console.log('add list');
-                this.props.dispatch(startAddList(friend.priority));
+                self.props.dispatch(startAddList(friend.priority));
               }
               history.push('/');
             }
@@ -136,7 +138,8 @@ class AddFriendPage extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    friends: state.friends
+    friends: state.friends,
+    lists: state.lists
   }
 }
 
