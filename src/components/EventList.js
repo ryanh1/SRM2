@@ -8,11 +8,11 @@ import selectEventsByFriendID from '../selectors/selectEventsByFriendID';
 
 const EventList = (props) => (
   <div>
-    <div>History:</div>
+    <div>Notes:</div>
     <AddEventPage friendID={props.friendID}/>
     {
       (!props.events || props.events.length === 0) ? (
-        <span>No events.</span>
+        <span>No notes.</span>
       ) : (
         props.events.map( (event) => {
           return (

@@ -9,11 +9,14 @@ export const LoginPage = ({ startLogin }) => {
     <div>
       {/* <div>
         <Landing />
-      </div> */}
-      <div className="text-center center-vertically">
+      </div> */
+      /* <div className="text-center center-vertically"> */
+    }
+
+      <div className="text-center">
         <button
           onClick={startLogin}
-          className="btn btn-lg btn-dark mb-5"
+          className="btn btn-lg btn-dark"
           >Login with Google
         </button>
       </div>

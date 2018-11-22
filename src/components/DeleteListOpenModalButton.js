@@ -31,10 +31,13 @@ class DeleteListOpenModalButton extends React.Component {
   onYesButtonClick = () => {
     var createdDefault = false;
     var self = this;
-    this.state.friends.forEach(
+    console.log('this.state.friends: ', JSON.stringify(this.state.friends));
+    console.log('this.state.priority: ', JSON.stringify(this.state.priority));
+    this.props.friends.forEach(
       function(friend) {
-        if (friend.priority == self.state.priority) {
+        if (friend.priority === self.state.priority) {
           createdDefault = true;
+          console.log('friend: ', JSON.stringify(friend));
           self.props.dispatch(startEditFriend(friend.id, {priority: defaultPriority}))
         }
       }
@@ -46,6 +49,7 @@ class DeleteListOpenModalButton extends React.Component {
       this.props.dispatch(startRemoveList(this.state.priority));
     }
     this.setState({modalOpen: false});
+    this.forceUpdate();
   }
 
   render() {
@@ -58,7 +62,7 @@ class DeleteListOpenModalButton extends React.Component {
           contentLabel={'Confirm'}
           className="bg-light modal border border-dark"
         >
-          <div>Are you sure you want to delete list {this.state.priority}?</div>
+          <div className="pl-3 pr-3">Are you sure you want to delete list {this.state.priority}?</div>
           <div className="mt-3">
             <button onClick={this.onYesButtonClick}>Yes</button>
             <button onClick={this.onNoButtonClick}>No</button>
