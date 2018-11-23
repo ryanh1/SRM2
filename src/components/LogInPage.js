@@ -12,7 +12,7 @@ export const LoginPage = ({ startLogin }) => {
       </div> */
       /* <div className="text-center center-vertically"> */
     }
-
+      <title>Buddy</title>
       <div className="text-center">
         <button
           onClick={startLogin}

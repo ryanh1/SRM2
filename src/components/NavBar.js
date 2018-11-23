@@ -6,6 +6,7 @@ import LogOutButton from './LogOutButton';
 
 const NavBar = () => (
   <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-3">
+    <title>Buddy</title>
     <div className="container">
       <Link className="navbar-brand" to="/">Buddy</Link>
       <ul className="navbar-nav">
