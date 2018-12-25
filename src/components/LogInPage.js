@@ -6,7 +6,7 @@ import { startLogin } from '../actions/auth';
 
 export const LoginPage = ({ startLogin }) => {
   return (
-    <div>
+    <div key="login_button_div">
       {/* <div>
         <Landing />
       </div> */
@@ -17,6 +17,7 @@ export const LoginPage = ({ startLogin }) => {
         <button
           onClick={startLogin}
           className="btn btn-lg btn-dark"
+          key="login_button"
           >Login with Google
         </button>
       </div>
