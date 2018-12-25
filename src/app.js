@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import ReactGA from 'react-ga'
 
 import AppRouter, {history} from './routers/AppRouter';
 import configureStore from './store/configureStore';
@@ -11,7 +12,7 @@ import setInitialState from './actions/setInitialState';
 import LoadingPage from './components/LoadingPage';
 
 
-
+ReactGA.initialize('UA-131386599-1');
 
 const store = configureStore();
 console.log('src/app.js is running!');
