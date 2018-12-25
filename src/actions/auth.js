@@ -1,5 +1,6 @@
 import { firebase, googleAuthProvider} from '../firebase/firebase';
 import {startAddAccount} from './account';
+import {amp} from '../amplitude/amplitude';
 
 export const login = (uid) => ({
   type: 'LOGIN',
@@ -10,6 +11,12 @@ export const startLogin = () => {
   return () => {
     return firebase.auth().signInWithPopup(googleAuthProvider).then(
       function(result) {
+        var eventProperties = {
+         'userId': result.user.uid,
+         'displayName': result.user.displayName
+        };
+        amp.setUserId(result.user.uid);
+        amp.logEvent('Log in', eventProperties);
         // 1. This gives you a Google Access Token. You can use it to access the Google API.
         // var token = result.credential.accessToken;
 

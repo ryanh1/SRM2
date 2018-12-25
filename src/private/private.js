@@ -7,3 +7,5 @@ export const firebaseConfiguration = {
   storageBucket: "srm2-rsh.appspot.com",
   messagingSenderId: "524959536418"
 };
+
+export const AmplitudeApiKey = "4dbe07f76a4ab526b60a30b7c7f0bfac";
