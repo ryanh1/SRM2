@@ -12,6 +12,7 @@ export const LoginPage = ({ startLogin }) => {
       </div> */
       /* <div className="text-center center-vertically"> */
     }
+      <script src="//fast.appcues.com/45361.js"></script>
       <title>Buddy</title>
       <div className="text-center" id="button-key">
         <button
