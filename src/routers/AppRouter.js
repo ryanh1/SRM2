@@ -18,7 +18,7 @@ import PrivateRoute from './PrivateRoute';
 export const history = createHistory();
 
 const AppRouter = () => (
-  <Router history={history}>
+  <Router history={history} onUpdate={()=>window.Appcues.page()}>
     <div>
       <Switch>
         <Route path="/login" component={LandingPage} exact={true} onChange={()=>window.Appcues.start()}/>
