@@ -21,7 +21,7 @@ const AppRouter = () => (
   <Router history={history}>
     <div>
       <Switch>
-        <Route path="/login" component={LandingPage} exact={true}/>
+        <Route path="/login" component={LandingPage} exact={true} onChange={()=>window.Appcues.start()}/>
         // <Route path="/login" component={LoginPage} exact={true}/>
         <PrivateRoute path="/" component={FriendKanban} exact={true}/>
         <PrivateRoute path="/friends/:id" component={EditFriendPage} exact={true}/>
