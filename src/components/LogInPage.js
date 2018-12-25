@@ -13,10 +13,11 @@ export const LoginPage = ({ startLogin }) => {
       /* <div className="text-center center-vertically"> */
     }
       <title>Buddy</title>
-      <div className="text-center">
+      <div className="text-center" key="button-key">
         <button
           onClick={startLogin}
           className="btn btn-lg btn-dark"
+          key="button_key"
           >Login with Google
         </button>
       </div>

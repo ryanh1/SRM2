@@ -4,3 +4,4 @@ public/bundle.js
 public/bundle.js.map
 public/styles.js
 public/styles.js.map
+src/private/private.js
