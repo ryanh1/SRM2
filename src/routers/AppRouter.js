@@ -39,15 +39,10 @@ const AppRouter = () => (
 history.listen(location => {
 	ReactGA.set({ page: location.pathname })
 	ReactGA.pageview(location.pathname)
-  console.log(JSON.stringify(location));
+  // console.log(JSON.stringify(location));
 })
 
 class AppRouter extends React.Component {
-
-  // componentDidMount() {
-  //   ReactGA.pageview(window.location.pathname)
-  // }
-
   render() {
     return (
       <Router history={history} onUpdate={()=>window.Appcues.page()}>

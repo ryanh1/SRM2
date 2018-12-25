@@ -11,6 +11,9 @@ import { login, logout } from './actions/auth';
 import setInitialState from './actions/setInitialState';
 import LoadingPage from './components/LoadingPage';
 
+// Init amplitude
+import './amplitude/amplitude';
+
 
 ReactGA.initialize('UA-131386599-1');
 
