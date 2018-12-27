@@ -9,3 +9,16 @@ export const firebaseConfiguration = {
 };
 
 export const AmplitudeApiKey = "4dbe07f76a4ab526b60a30b7c7f0bfac";
+
+/*
+To do:
+
+Technologies used:
+-Everything in package.json
+-Bootstrap
+-Amplitude
+-Google Analytics
+-Quantcast measure
+-Google Tag Manager
+
+*/
