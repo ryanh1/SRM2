@@ -8,11 +8,9 @@ import EditFriendPage from '../components/EditFriendPage';
 import ManageLists from '../components/ManageLists';
 import LoginPage from '../components/LogInPage';
 import EditAccountForm from '../components/EditAccountForm';
+import EditListForm from '../components/EditListForm';
 import LandingPage from '../components/LandingPage';
 import Contact from '../components/Contact';
-
-
-
 
 import createHistory from 'history/createBrowserHistory';
 import PrivateRoute from './PrivateRoute';
@@ -52,6 +50,7 @@ class AppRouter extends React.Component {
             // <Route path="/login" component={LoginPage} exact={true}/>
             <PrivateRoute path="/" component={FriendKanban} exact={true}/>
             <PrivateRoute path="/friends/:id" component={EditFriendPage} exact={true}/>
+						<PrivateRoute path="/lists/:priority" component={EditListForm} exact={true}/>
             <PrivateRoute path="/ManageLists" component={ManageLists} exact={true}/>
             <PrivateRoute path="/Contact" component={Contact} exact={true}/>
             <PrivateRoute path="/account" component={EditAccountForm} exact={true}/>

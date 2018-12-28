@@ -5,31 +5,34 @@ const listsReducer = (
 ) => {
   switch (action.type) {
     case 'ADD_LIST':
-      const reducedList = state.filter( (priority) => {
-        return priority != action.priority
+      var listAlreadyExists = false;
+      state.forEach( (list) => {
+        if (list.priority == action.list.priority) {listAlreadyExists = true}
       })
-      const completeList = [
-        ...reducedList,
-        action.priority
-      ]
-      return completeList.sort()
+      if (!listAlreadyExists) {
+        const completeList = [
+          ...state,
+          action.list
+        ]
+        return completeList.sort()
+      }
     case 'REMOVE_LIST':
-      return state.filter( (priority) => {
-        return priority != action.priority
+      return state.filter( (list) => {
+        return list.priority != action.priority
       })
     case 'SET_LISTS':
       return action.lists;
-    // case 'EDIT_LIST':
-    //   return state.map( (list) => {
-    //     if (list.id === action.id) {
-    //       return {
-    //         ...list,
-    //         action.updates
-    //       }
-    //     } else {
-    //       return list;
-    //     };
-    //   });
+    case 'EDIT_LIST':
+    return state.map((list) => {
+      if (list.priority === action.list.priority) {
+        return {
+          ...list,
+          ...action.list
+        }
+      } else {
+        return list;
+      }
+    })
     default:
       return state;
   }

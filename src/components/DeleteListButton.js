@@ -9,10 +9,4 @@ const deleteListButton = (props) => (
   <button onClick={() => {props.dispatch(startRemoveList(props.priority))}}>Delete</button>
 )
 
-const mapStateToProps = (props) => {
-  return {
-    list: state.lists.find((list) => list === props.priority)
-  };
-};
-
 export default connect()(deleteListButton);

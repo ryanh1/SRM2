@@ -6,8 +6,11 @@ import { connect } from 'react-redux';
 import {startRemoveFriend} from '../actions/friends';
 // import {startRemoveList} from '../actions/lists';
 import {startRemoveLocation} from '../actions/locations';
+import {startRemoveEvent} from '../actions/events';
 import numberOfFriendsWithLocation from '../selectors/numberOfFriendsWithLocation';
 import numberOfFriendsWithPriority from '../selectors/numberOfFriendsWithPriority';
+import selectEventsByFriendID from '../selectors/selectEventsByFriendID';
+
 
 class DeleteFriendOpenModalButton extends React.Component {
   constructor(props) {
@@ -38,10 +41,19 @@ class DeleteFriendOpenModalButton extends React.Component {
     //   this.props.dispatch(startRemoveList(this.state.friend.priority));
     // }
 
-    // 3. Remove friend
+    // 3. Delete all of that friend's events.
+    const friendsEvents = selectEventsByFriendID(this.props.events, this.state.friend.id);
+    console.log(JSON.stringify(friendsEvents));
+    const eventIDs = friendsEvents.map((event) => { return event.id});
+    console.log(JSON.stringify(eventIDs));
+    eventIDs.forEach( (id) => {
+      this.props.dispatch(startRemoveEvent(id));
+    })
+
+    // 4. Remove friend
     this.props.dispatch(startRemoveFriend(this.state.friend.id));
 
-    // 4. Other
+    // 5. Other
     this.setState({modalOpen: false});
     this.props.history.push('/');
   }
@@ -74,7 +86,8 @@ class DeleteFriendOpenModalButton extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-      friends: state.friends
+      friends: state.friends,
+      events: state.events
     };
 };
 
