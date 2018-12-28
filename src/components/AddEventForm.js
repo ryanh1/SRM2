@@ -48,6 +48,7 @@ export default class AddEventForm extends React.Component {
             className="textarea"
             value={this.state.note}
             onChange={this.onNoteChange}
+            autoFocus={true}
           />
           <button className="ml-3">Save note</button>
         </form>
