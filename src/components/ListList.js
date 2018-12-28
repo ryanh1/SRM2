@@ -16,7 +16,7 @@ class ListList extends React.Component {
         <h2>Your lists:</h2>
         {this.props.lists.map(
           (list) => {
-            return <div key={list}>List: {list}</div>
+            return <div key={list.priority}>{list.priority}. {list.name}</div>
           }
         )}
       </div>

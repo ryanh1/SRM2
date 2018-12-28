@@ -5,7 +5,7 @@ import {history} from '../routers/AppRouter';
 
 import AddFriendForm from './AddFriendForm.js';
 import { startAddFriend, startEditFriend } from '../actions/friends'
-import { startAddList, startEditList, startRemoveList } from '../actions/lists'
+import { startAddList, startRemoveList } from '../actions/lists'
 import { startAddLocation, startRemoveLocation } from '../actions/locations'
 import selectFriendsByPriority from '../selectors/selectFriendsByPriority';
 import extractLocationsFromFriends from '../selectors/extractLocationsFromFriends';

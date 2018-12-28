@@ -3,17 +3,18 @@ import database from '../firebase/firebase';
 import extractListsFromFriends from '../selectors/extractListsFromFriends';
 
 
-const addList = (priority) => ({
+const addList = (list) => ({
   type: 'ADD_LIST',
-  priority
+  list
 });
 
 export const startAddList = (priority) => {
   return (dispatch, getState) => {
     console.log(`In startAddList with priority ${priority}.`)
+    const list = {priority, name: "List"}
     const uid = getState().auth.uid;
-    return database.ref(`users/${uid}/lists/${priority}`).set(priority).then(
-      dispatch(addList(priority))
+    return database.ref(`users/${uid}/lists/${priority}`).set(list).then(
+      dispatch(addList(list))
     ).catch(
       (e) => {console.log('Error saving list: ', e)}
     )
@@ -38,11 +39,19 @@ export const startRemoveList = (priority) => {
 }
 
 // EDIT_LIST
-const editLIST = (id, updates) => ({
+const editList = (list) => ({
   type: 'EDIT_LIST',
-  id,
-  updates
+  list
 });
+
+export const startEditList = (list) => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
+    database.ref(`users/${uid}/lists/${list.priority}`).update(list).then(() => {
+      dispatch(editList(list));
+    });
+  };
+};
 
 const setLists = (lists) => ({
   type: 'SET_LISTS',

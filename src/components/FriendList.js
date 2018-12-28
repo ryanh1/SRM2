@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
+
 
 import FriendCard from './FriendCard.js';
 import selectFriendsByPriority from '../selectors/selectFriendsByPriority';
@@ -19,13 +21,13 @@ class FriendList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      filteredFriends: selectFriendsByPriority(props.friends, props.priority)
+      filteredFriends: selectFriendsByPriority(props.friends, props.list.priority)
     }
   }
 
   componentWillReceiveProps(nextProps){
     if(nextProps.friends!==this.props.friends) {
-      this.setState( () => ( {filteredFriends: selectFriendsByPriority(nextProps.friends, this.props.priority)} ) )
+      this.setState( () => ( {filteredFriends: selectFriendsByPriority(nextProps.friends, this.props.list.priority)} ) )
     }
   }
 
@@ -106,12 +108,14 @@ class FriendList extends React.Component {
       <div>
         <div className="m-3">
           <div className="d-flex justify-content-between">
-            <h3 className="mr-5">List: {this.props.priority}</h3>
-              <DeleteListOpenModalButton
-                className="ml-auto"
-                priority={this.props.priority}
-                modalOpen={false}
-              />
+            <Link to={`/lists/${this.props.list.priority}`} className="text-dark">
+              <h3 className="mr-5">{this.props.list.priority}. {this.props.list.name}</h3>
+            </Link>
+            <DeleteListOpenModalButton
+              className="ml-auto"
+              priority={this.props.list.priority}
+              modalOpen={false}
+            />
           </div>
 
           <div>

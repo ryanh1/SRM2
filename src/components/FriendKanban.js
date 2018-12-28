@@ -17,7 +17,7 @@ const FriendKanban = (props) => {
         <div
           className="col-2.5 m-3 border border-secondary"
           key={list}>
-            <FriendList priority={list} key={list}/>
+            <FriendList list={list} key={list}/>
         </div>
       )
     })
