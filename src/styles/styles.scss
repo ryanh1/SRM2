@@ -20,10 +20,26 @@ $baige: #f1e8ac;
   margin: auto;
 }
 
+.filter-modal {
+  height: 67vh;
+  width: 67vw;
+}
+
+.scrollable {
+  height: 53vh;
+  overflow-y: auto;
+}
+
 .center-horrizontally {
   display: flex;
   justify-content: center;
   width: 100vw;
+}
+
+.button-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .button-link {
@@ -80,4 +96,12 @@ $baige: #f1e8ac;
 .message-box {
   height: 100px;
   width: 100px
+}
+
+.overflow {
+    overflow: hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    width:150px;
+    display:inline-block;
 }
