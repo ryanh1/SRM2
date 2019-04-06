@@ -24,7 +24,7 @@ class EditListForm extends React.Component {
   onSubmit = (e) => {
     e.preventDefault();
     this.props.dispatch(startEditList({
-      priority: this.state.priority,
+      priority: this.props.list.priority,
       name: this.state.name
     }));
     history.push('/');
@@ -36,13 +36,13 @@ class EditListForm extends React.Component {
         <form onSubmit={this.onSubmit} className="border p-3 border-dark">
           <div className="container">
             <div className="row">
-              <label className="col">{this.state.priority}. </label>
+              <label className="col">{this.props.list.priority}. </label>
               <input
                 type="text"
                 placeholder={this.state.name}
                 value={this.state.name}
                 onChange={this.onNameChange}
-                className="col-md-7"
+                className="col-md-9"
               />
             </div>
           </div>
@@ -57,7 +57,7 @@ class EditListForm extends React.Component {
 
 const mapStateToProps = (state, props) => {
     return {
-      list: state.lists.find((list) => list.priority === props.match.params.priority),
+      list: state.lists.find((list) => list.priority == props.match.params.priority),
     };
 };
 
