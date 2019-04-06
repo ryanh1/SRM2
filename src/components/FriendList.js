@@ -13,7 +13,7 @@ import selectFriendsBySelectedLocations from '../selectors/selectFriendsBySelect
 // import DeleteListButton from './deleteListButton';
 import DeleteListOpenModalButton from './DeleteListOpenModalButton';
 import { startEditFriend } from '../actions/friends';
-import {defaultPriority} from '../system/variables';
+import {defaultName0, defaultPriority} from '../system/variables';
 import { startAddList, startRemoveList } from '../actions/lists'
 
 
@@ -58,7 +58,9 @@ class FriendList extends React.Component {
     this.props.dispatch(startEditFriend(friend.id, {...friend}));
 
     // 2. Add a new list if necessary
-    this.props.dispatch(startAddList(newPriority));
+    if (numberOfListsWithPriority(this.props.lists, newPriority) == 0) {
+      this.props.dispatch(startAddList(newPriority));
+    }
 
     // 3. If the old list is empty, delete it.
     var countInListBeforeDelete = 0;
@@ -150,7 +152,8 @@ class FriendList extends React.Component {
 const mapStateToProps = (state) => {
   return {
     friends: state.friends,
-    locations: state.locations
+    locations: state.locations,
+    lists: state.lists
   }
 }
 

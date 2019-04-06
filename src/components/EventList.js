@@ -12,7 +12,7 @@ const EventList = (props) => (
     <AddEventPage friendID={props.friendID}/>
     {
       (!props.events || props.events.length === 0) ? (
-        <span>No notes.</span>
+        <span></span>
       ) : (
         props.events.map( (event) => {
           return (

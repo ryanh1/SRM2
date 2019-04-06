@@ -23,7 +23,7 @@ export default () => {
       auth: authReducer,
       account: accountReducer,
       locations: locationsReducer,
-      guides: guidesReducer
+      guides: guidesReducer,
     }),
     composeEnhancers(applyMiddleware(thunk))
   );

@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarn github-9
+  /usr/local/bin/node /usr/local/bin/yarn add React-tooltip
 
 PATH: 
   /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/Users/ryanhollander/mongo/bin:/Users/ryanhollander/mongo/bin
@@ -36,16 +36,17 @@ npm manifest:
       "github-3": "git rm --cached src/private/private.js",
       "github-4": "echo src/private/private.js >> .gitignore",
       "github-5": "git add -A",
-      "github-6": "git commit -m 'auto'",
+      "github-6": "git commit -m 'update github'",
       "github-7": "git push",
       "github-8": "git checkout master",
-      "github-9": "git add src/private/private.js",
+      "github-9": "git add src/private/private.js -f",
       "github-10": "// delete the private line",
       "github-11": "git add -A",
-      "github-12": "git commit",
-      "github-13": "git push heroku master",
+      "github-12": "git commit -m 'update master'",
+      "github-13": "git push heroku master"
     },
     "dependencies": {
+      "amplitude-js": "^4.6.0-beta.2",
       "babel-cli": "^6.26.0",
       "babel-core": "^6.26.0",
       "babel-loader": "^7.1.2",
@@ -64,6 +65,7 @@ npm manifest:
       "normalize.css": "^8.0.0",
       "react": "^16.5.2",
       "react-dom": "^16.5.2",
+      "react-ga": "^2.5.6",
       "react-modal": "^3.6.1",
       "react-redux": "^5.0.6",
       "react-router-dom": "^4.2.2",
@@ -71,6 +73,7 @@ npm manifest:
       "redux-thunk": "^2.3.0",
       "sass-loader": "^7.1.0",
       "style-loader": "^0.23.1",
+      "tippy.js": "^4.2.1",
       "uuid": "^3.3.2",
       "webpack": "^3.10.0",
       "webpack-dev-server": "^2.9.7"
@@ -257,6 +260,16 @@ Lockfile:
   amdefine@>=0.0.4:
     version "1.0.1"
     resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
+  
+  amplitude-js@^4.6.0-beta.2:
+    version "4.6.0-beta.2"
+    resolved "https://registry.yarnpkg.com/amplitude-js/-/amplitude-js-4.6.0-beta.2.tgz#99db6257b8e00359603e0beb25250c119a5778cc"
+    dependencies:
+      blueimp-md5 "^2.10.0"
+      json3 "^3.3.2"
+      lodash "^4.17.4"
+      query-string "5"
+      ua-parser-js "github:amplitude/ua-parser-js#ed538f1"
   
   ansi-html@0.0.7:
     version "0.0.7"
@@ -1059,6 +1072,10 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/block-stream/-/block-stream-0.0.9.tgz#13ebfe778a03205cfe03751481ebb4b3300c126a"
     dependencies:
       inherits "~2.0.0"
+  
+  blueimp-md5@^2.10.0:
+    version "2.10.0"
+    resolved "https://registry.yarnpkg.com/blueimp-md5/-/blueimp-md5-2.10.0.tgz#02f0843921f90dca14f5b8920a38593201d6964d"
   
   bn.js@^4.0.0, bn.js@^4.1.0, bn.js@^4.1.1, bn.js@^4.4.0:
     version "4.11.8"
@@ -3768,6 +3785,10 @@ Lockfile:
     dependencies:
       find-up "^2.1.0"
   
+  popper.js@^1.14.7:
+    version "1.14.7"
+    resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.14.7.tgz#e31ec06cfac6a97a53280c3e55e4e0c860e7738e"
+  
   portfinder@^1.0.9:
     version "1.0.17"
     resolved "https://registry.yarnpkg.com/portfinder/-/portfinder-1.0.17.tgz#a8a1691143e46c4735edefcf4fbcccedad26456a"
@@ -3905,6 +3926,14 @@ Lockfile:
     version "6.5.2"
     resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
   
+  query-string@5:
+    version "5.1.1"
+    resolved "http://registry.npmjs.org/query-string/-/query-string-5.1.1.tgz#a78c012b71c17e05f2e3fa2319dd330682efb3cb"
+    dependencies:
+      decode-uri-component "^0.2.0"
+      object-assign "^4.1.0"
+      strict-uri-encode "^1.0.0"
+  
   querystring-es3@^0.2.0:
     version "0.2.1"
     resolved "https://registry.yarnpkg.com/querystring-es3/-/querystring-es3-0.2.1.tgz#9ec61f79049875707d69414596fd907a4d711e73"
@@ -3968,6 +3997,10 @@ Lockfile:
       object-assign "^4.1.1"
       prop-types "^15.6.2"
       schedule "^0.5.0"
+  
+  react-ga@^2.5.6:
+    version "2.5.6"
+    resolved "https://registry.yarnpkg.com/react-ga/-/react-ga-2.5.6.tgz#5a2e2fa78ae298e5b0a4498210eeec631ef1b562"
   
   react-lifecycles-compat@^3.0.0:
     version "3.0.4"
@@ -4633,6 +4666,10 @@ Lockfile:
       to-arraybuffer "^1.0.0"
       xtend "^4.0.0"
   
+  strict-uri-encode@^1.0.0:
+    version "1.1.0"
+    resolved "https://registry.yarnpkg.com/strict-uri-encode/-/strict-uri-encode-1.1.0.tgz#279b225df1d582b1f54e65addd4352e18faa0713"
+  
   string-width@^1.0.1, string-width@^1.0.2:
     version "1.0.2"
     resolved "https://registry.yarnpkg.com/string-width/-/string-width-1.0.2.tgz#118bdf5b8cdc51a2a7e70d211e07e2b0b9b107d3"
@@ -4755,6 +4792,12 @@ Lockfile:
     dependencies:
       setimmediate "^1.0.4"
   
+  tippy.js@^4.2.1:
+    version "4.2.1"
+    resolved "https://registry.yarnpkg.com/tippy.js/-/tippy.js-4.2.1.tgz#9e4939d976465f77229b05a3cb233b5dc28cf850"
+    dependencies:
+      popper.js "^1.14.7"
+  
   to-arraybuffer@^1.0.0:
     version "1.0.1"
     resolved "https://registry.yarnpkg.com/to-arraybuffer/-/to-arraybuffer-1.0.1.tgz#7d229b1fcc637e466ca081180836a7aabff83f43"
@@ -4830,6 +4873,10 @@ Lockfile:
     dependencies:
       media-typer "0.3.0"
       mime-types "~2.1.18"
+  
+  "ua-parser-js@github:amplitude/ua-parser-js#ed538f1":
+    version "0.7.10"
+    resolved "https://codeload.github.com/amplitude/ua-parser-js/tar.gz/ed538f16f5c6ecd8357da989b617d4f156dcf35d"
   
   uglify-js@^2.8.29:
     version "2.8.29"
@@ -5245,10 +5292,14 @@ Lockfile:
       window-size "0.1.0"
 
 Trace: 
-  SyntaxError: /Users/ryanhollander/Documents/Coding/udemy_react_course/SRM2/package.json: Unexpected token } in JSON at position 1055
-      at JSON.parse (<anonymous>)
-      at /usr/local/lib/node_modules/yarn/lib/cli.js:770:59
-      at Generator.next (<anonymous>)
-      at step (/usr/local/lib/node_modules/yarn/lib/cli.js:92:30)
-      at /usr/local/lib/node_modules/yarn/lib/cli.js:103:13
-      at <anonymous>
+  Error: https://registry.yarnpkg.com/React-tooltip: Not found
+      at Request.params.callback [as _callback] (/usr/local/lib/node_modules/yarn/lib/cli.js:62098:18)
+      at Request.self.callback (/usr/local/lib/node_modules/yarn/lib/cli.js:123085:22)
+      at emitTwo (events.js:135:13)
+      at Request.emit (events.js:224:7)
+      at Request.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:124068:10)
+      at emitOne (events.js:125:13)
+      at Request.emit (events.js:221:7)
+      at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:123988:12)
+      at Object.onceWrapper (events.js:322:30)
+      at emitNone (events.js:120:20)

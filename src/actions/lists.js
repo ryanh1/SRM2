@@ -1,6 +1,7 @@
 import uuid from 'uuid';
 import database from '../firebase/firebase';
 import extractListsFromFriends from '../selectors/extractListsFromFriends';
+import {defaultName0} from '../system/variables';
 
 
 const addList = (list) => ({
@@ -11,9 +12,21 @@ const addList = (list) => ({
 export const startAddList = (priority) => {
   return (dispatch, getState) => {
     console.log(`In startAddList with priority ${priority}.`)
-    const list = {priority, name: "List"}
+    const list = {priority, name: defaultName0}
     const uid = getState().auth.uid;
     return database.ref(`users/${uid}/lists/${priority}`).set(list).then(
+      dispatch(addList(list))
+    ).catch(
+      (e) => {console.log('Error saving list: ', e)}
+    )
+  };
+};
+
+export const startAddFullList = (list) => {
+  return (dispatch, getState) => {
+    console.log(`In startAddFullList with priority ${list.priority}.`)
+    const uid = getState().auth.uid;
+    return database.ref(`users/${uid}/lists/${list.priority}`).set(list).then(
       dispatch(addList(list))
     ).catch(
       (e) => {console.log('Error saving list: ', e)}
