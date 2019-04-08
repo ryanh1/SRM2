@@ -60,16 +60,16 @@ class DeleteListOpenModalButton extends React.Component {
           onRequestClose={this.onNoButtonClick}
           closeTimeoutMS={200}
           contentLabel={'Confirm'}
-          className="bg-light modal border border-dark"
+          className="bg-light custom-modal modal__medium-modal border border-dark rounded card-4 pb-4"
         >
           <div className="pl-3 pr-3">Are you sure you want to delete list {this.state.priority}?</div>
-          <div className="mt-3">
-            <button onClick={this.onYesButtonClick}>Yes</button>
-            <button onClick={this.onNoButtonClick}>No</button>
+          <div className="mt-3 center-horrizontally">
+            <button className="m-3 btn btn-danger" onClick={this.onYesButtonClick}>Yes</button>
+            <button className="m-3 btn btn-secondary" onClick={this.onNoButtonClick}>No</button>
           </div>
         </Modal>
 
-        <button onClick={this.onDeleteButtonClick}>Delete</button>
+        <button onClick={this.onDeleteButtonClick} className="btn btn-info">Delete</button>
 
       </div>
     )

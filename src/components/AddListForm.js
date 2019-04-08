@@ -37,12 +37,20 @@ class AddListForm extends React.Component {
   // Render component
   render() {
     return (
-      <div>
+      <div className="p-3 card-2">
         <h2>Add a new list.</h2>
         <form onSubmit={this.onSubmit}>
-          <input type="number" placeholder={defaultPriority} value={this.state.priority} onChange={this.onPriorityChange}/>
-          <input type="text" placeholder={defaultName1} value={this.state.name} onChange={this.onNameChange}/>
-          <button>Save List</button>
+          <div className="group">
+            <input type="number" placeholder={defaultPriority} value={this.state.priority} onChange={this.onPriorityChange}/>
+            <span className="highlight"></span>
+            <span className="bar"></span>
+          </div>
+          <div className="group">
+            <input type="text" placeholder={defaultName1} value={this.state.name} onChange={this.onNameChange}/>
+            <span className="highlight"></span>
+            <span className="bar"></span>
+          </div>
+          <button className="btn btn-primary">Save List</button>
         </form>
       </div>
     )

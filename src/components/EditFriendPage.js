@@ -18,12 +18,12 @@ const EditFriendPage = (props) => (
     <Guide friends={props.friends} guides={props.guides} page={"EditFriend"} />
 
     <div>
-      <div className="text-center d-inline-flex border border-secondary mt-5 m-3 p-3">
+      <div className="text-center d-inline-flex card-2 mt-5 m-3 p-3">
         <AddFriendPage friend={props.friend} function="edit" />
       </div>
     </div>
-    <div className="text-center d-inline-flex border border-secondary mt-5 m-3 p-3">
-      <EventList friendID={props.friend.id}/>
+    <div className="text-center d-inline-flex card-2 mt-5 m-3 p-3">
+      <EventList className="card-2" friendID={props.friend.id}/>
     </div>
     <DeleteFriendOpenModalButton
       friend={props.friend}

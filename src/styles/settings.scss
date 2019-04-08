@@ -1,0 +1,28 @@
+/* --- COLORS --- */
+
+// Bootstrap override
+$primary: #29b6f6;
+$primary-dark: #01579b;
+$light: #fff;
+$info: #e0e0e0;
+
+// Custom colors
+$dark: #343a40;
+$textWhite: #fff;
+$baige: #f1e8ac;
+$muted-color: #6c757d;
+$input-label-font-color: #999;
+
+
+
+/* --- BREAKPOINTS --- */
+
+// Min-width of each size
+// These are the breakpoints from bootstrap
+// $break-s: 576px;
+$break-m: 768px;
+$break-l: 992px;
+$break-xl: 1200px;
+
+$input-width: 200px;
+$input-label-font-size: 18px;

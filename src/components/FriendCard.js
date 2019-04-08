@@ -34,9 +34,9 @@ class FriendCard extends React.Component {
             {this.props.friend.firstName} {this.props.friend.lastName}
           </Link>
           <div className="ml-3">
-            <button onClick={this.onCheckButton}>✓</button>
-            <button onClick={this.onUpButton}>▲</button>
-            <button onClick={this.onDownButton}>▼</button>
+            <button className="btn btn-sm btn-light" onClick={this.onCheckButton}>✓</button>
+            <button className="btn btn-sm btn-light" onClick={this.onUpButton}>▲</button>
+            <button className="btn btn-sm btn-light" onClick={this.onDownButton}>▼</button>
           </div>
         </div>
         <div>{this.props.friend.todo}</div>

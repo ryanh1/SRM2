@@ -26,11 +26,11 @@ class GuideModal extends React.Component {
           onRequestClose={this.onOkButtonClick}
           closeTimeoutMS={200}
           contentLabel={'Confirm'}
-          className="bg-light modal border border-dark"
+          className="bg-light custom-modal modal__medium-modal border border-dark rounded card-4 pb-4"
         >
           <div className="pl-3 pr-3">{this.props.message}</div>
           <div className="mt-3">
-            <button onClick={this.onOkButtonClick}>Ok</button>
+            <button className="btn btn-primary mr-3" onClick={this.onOkButtonClick}>Ok</button>
           </div>
         </Modal>
       </div>

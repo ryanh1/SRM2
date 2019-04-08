@@ -45,12 +45,12 @@ export default class AddEventForm extends React.Component {
           <p>{this.props.date}</p>
           <textarea
             placeholder="Add a note."
-            className="textarea"
+            className="textarea form-control"
             value={this.state.note}
             onChange={this.onNoteChange}
             autoFocus={true}
           />
-          <button className="ml-3">Save note</button>
+          <button  className="m-3 btn btn-info">Save note</button>
         </form>
       </div>
     )
