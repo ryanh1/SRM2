@@ -16,7 +16,7 @@ export const LoginPage = ({ startLogin }) => {
           onClick={startLogin}
           className="btn btn-lg btn-primary"
           id="button_key"
-          >Login with Google
+        >Login with Google
         </button>
       </div>
     </div>
