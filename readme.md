@@ -21,7 +21,7 @@ Overall:
 
 Styles:
 -Bootstrap
--Custom CSS and SaaS
+-Custom CSS and SaaS in the style of Google's Material Design
 
 Analytics:
 -Amplitude

@@ -20,20 +20,26 @@ class LocationsSelector extends React.Component {
 
   render() {
     return (
-      <div className="ml-3 mr-3 scrollable">
-        {this.props.locations.map(
-          (location) => (
-            <span key={location.value} className="mr-2 ml-2 overflow">
-              <input
-                type="checkbox"
-                value={location.value}
-                onChange={this.onCheck}
-                checked={location.selected}
-              />
-              <span key={location.value}> {location.value}</span>
-            </span>
-          )
-        )}
+      <div className="ml-3 mr-3">
+        <div className="scrollable">
+          {this.props.locations.map(
+            (location) => (
+              <span key={location.value} className="mr-2 ml-2 overflow">
+                <div className="form-check">
+                  <input
+                    type="checkbox"
+                    value={location.value}
+                    onChange={this.onCheck}
+                    checked={location.selected}
+                    className="form-check-input"
+                    id={location.value}
+                  />
+                  <span className="form-check-label" key={location.value}> {location.value}</span>
+                </div>
+              </span>
+            )
+          )}
+        </div>
       </div>
     )
   }

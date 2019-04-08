@@ -12,13 +12,15 @@ class ListList extends React.Component {
 
   render() {
     return (
-      <div>
-        <h2>Your lists:</h2>
-        {this.props.lists.map(
-          (list) => {
-            return <div key={list.priority}>{list.priority}. {list.name}</div>
-          }
-        )}
+      <div className="d-flex justify-content-center">
+        <div className="list-list card-2 p-5">
+          <h2>Your lists</h2>
+          {this.props.lists.map(
+            (list) => {
+              return <div className="text-justify" key={list.priority}>{list.priority}. {list.name}</div>
+            }
+          )}
+        </div>
       </div>
     )
   }

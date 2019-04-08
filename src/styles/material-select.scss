@@ -1,0 +1,42 @@
+@import './settings';
+
+.select-text {
+  position: absolute;
+  bottom: 13px;
+	font-family: inherit;
+	background-color: transparent;
+	width: $input-width - 40px;
+  color: $secondary;
+	// padding: 30px 10px 10px 0;
+	font-size: $input-label-font-size;
+	// border-radius: 0;
+	border: none;
+	// border-bottom: 1px solid rgba(0,0,0, 0.12);
+}
+
+/* Remove focus */
+.select-text:focus {
+	outline: none;
+	border-bottom: 1px solid rgba(0,0,0, 0);
+}
+
+	/* Use custom arrow */
+.select .select-text {
+	appearance: none;
+	-webkit-appearance:none
+}
+
+.select:after {
+	// position: absolute;
+	// top: 18px;
+	// right: 10px;
+	/* Styling the down arrow */
+	width: 0;
+	height: 0;
+	padding: 0;
+	content: '';
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+	border-top: 6px solid rgba(0, 0, 0, 0.12);
+	pointer-events: none;
+}

@@ -8,18 +8,13 @@ import {amp} from '../amplitude/amplitude';
 export const LoginPage = ({ startLogin }) => {
   return (
     <div>
-      {/* <div>
-        <Landing />
-        </div> */
-        /* <div className="text-center center-vertically"> */
-      }
       <script> amp.logEvent('Viewed LoginPage') </script>
       <script src="//fast.appcues.com/45361.js"></script>
       <title>Buddy</title>
       <div className="text-center" id="button-key">
         <button
           onClick={startLogin}
-          className="btn btn-lg btn-dark"
+          className="btn btn-lg btn-primary"
           id="button_key"
           >Login with Google
         </button>

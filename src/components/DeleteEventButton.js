@@ -8,7 +8,9 @@ import {startRemoveEvent} from '../actions/events';
 
 
 const deleteEventButton = (props) => (
-  <button onClick={() => {props.dispatch(startRemoveEvent(props.id))}}>Delete</button>
+  <div className="center-horrizontally">
+    <button className="btn btn-info" onClick={() => {props.dispatch(startRemoveEvent(props.id))}}>Delete</button>
+  </div>
 )
 
 // const mapStateToProps = (props) => {

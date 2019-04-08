@@ -37,17 +37,20 @@ class EditListForm extends React.Component {
           <div className="container">
             <div className="row">
               <label className="col">{this.props.list.priority}. </label>
-              <input
-                type="text"
-                placeholder={this.state.name}
-                value={this.state.name}
-                onChange={this.onNameChange}
-                className="col-md-9"
-              />
+              <div className="group">
+                <input
+                  type="text"
+                  placeholder={this.state.name}
+                  value={this.state.name}
+                  onChange={this.onNameChange}
+                />
+                <span className="highlight"></span>
+                <span className="bar"></span>
+              </div>
             </div>
           </div>
           <div className="text-center">
-            <button className="mt-3">Save List Name</button>
+            <button className="btn btn-primary">Save List Name</button>
           </div>
         </form>
       </div>

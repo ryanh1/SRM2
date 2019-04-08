@@ -77,68 +77,119 @@ class AddFriendForm extends React.Component {
   // Render component
   render() {
     return (
-      <div className="pt-3">
-        <form onSubmit={this.onSubmit}>
+      <div>
+        <form
+          onSubmit={this.onSubmit}
+          className="container-fluid"
+        >
 
-          {/* First Name */}
-          <input
-            type="text"
-            placeholder={!!this.props.friend ? this.state.firstName : "First Name"}
-            value={this.state.firstName}
-            onChange={this.onFirstNameChange}
-          />
+          <div className="row">
 
-          {/* Last Name */}
-          <input
-            type="text"
-            placeholder={!!this.props.friend ? this.state.lastName : "Last Name"}
-            value={this.state.lastName}
-            onChange={this.onLastNameChange}
-          />
+            {/* First Name */}
+            <div className="group col-md-4">
+              <input
+                type="text"
+                placeholder={!!this.props.friend ? this.state.firstName : "First Name"}
+                value={this.state.firstName}
+                onChange={this.onFirstNameChange}
+                required={true}
+              />
+              <span className="highlight"></span>
+              <span className="bar"></span>
+            </div>
 
-          {/* List Priority */}
-          {this.state.id === '' ? <span></span> : <span className="ml-1">List: </span>}
-          <a data-tip data-for='priority'>
-            <select
-              name="priority"
-              id="priorityBox"
-              value={this.state.priority}
-              onChange={this.onPriorityChange}
-            >
-              {
-                this.props.lists.map(
-                  (list) => {
-                    return <option value={list.priority}>
-                      {list.priority}: {list.name}
-                      </option>
-                  }
-                )
-              }
-              <option value='New'>New list</option>
-            </select>
-          </a>
-          <ReactTooltip id='priority' place="bottom" type="dark" effect="solid">
-            <span>Lists let you group friends by the next action you want to take.</span>
-          </ReactTooltip>
+            {/* Last Name */}
+            <div className="group col-md-4">
+              <input
+                type="text"
+                placeholder={!!this.props.friend ? this.state.lastName : "Last Name"}
+                value={this.state.lastName}
+                onChange={this.onLastNameChange}
+                required={true}
+              />
+              <span className="highlight"></span>
+              <span className="bar"></span>
+            </div>
 
-          {/* Location */}
-          {this.state.id === '' ? <span></span> : <span className="ml-1">Location: </span>}
-          <input
-            type="text"
-            placeholder={!!this.props.friend ? this.state.location : "Location"}
-            value={this.state.location}
-            onChange={this.onLocationChange}
-          />
+            {/* List Priority */}
+            <span className="group col-md-4">
+              <div className="d-flex flex-row">
+                <div className="label">List</div>
+                <span className="">
+                  <span className="" id="selector-and-line">
+                    <a data-tip data-for='priority'>
+                        <div className="">
+                          <select
+                            name="priority"
+                            id="priorityBox"
+                            value={this.state.priority}
+                            onChange={this.onPriorityChange}
+                            className="select-text"
+                          >
+                            <option value="" disabled={true} selected={true}></option>
+                            {
+                              this.props.lists.map(
+                                (list) => {
+                                  return <option value={list.priority}>
+                                    {list.priority}: {list.name}
+                                    </option>
+                                }
+                              )
+                            }
+                            <option value='New'>New list</option>
+                          </select>
+                        </div>
+                    </a>
+                  </span>
+                </span>
+              </div>
+              <div>
+                <span className="bar-select"></span>
+              </div>
 
-          {/* To do */}
-          {this.state.id === '' ? <span></span> : <span className="ml-1">To do: </span>}
-          <input
-            type="text"
-            placeholder={!!this.props.friend ? this.state.todo : "To do"}
-            value={this.state.todo}
-            onChange={this.onTodoChange}
-          />
-          <button>Save Friend</button>
+              <ReactTooltip id='priority' place="bottom" type="dark" effect="solid">
+                <span>Lists let you group friends by the next action you want to take.</span>
+              </ReactTooltip>
+
+            </span>
+
+          </div>
+
+          <div id="row-2" className="row">
+            {/* Location */}
+            <div className="group col-md-4">
+              {this.state.id === '' ? <span></span> : <span className="ml-1">Location: </span>}
+              <input
+                type="text"
+                placeholder={!!this.props.friend ? this.state.location : "Location"}
+                value={this.state.location}
+                onChange={this.onLocationChange}
+                required={false}
+              />
+              <span className="highlight"></span>
+              <span className="bar"></span>
+            </div>
+
+            {/* To do */}
+            <div className="group col-md-4">
+              {this.state.id === '' ? <span></span> : <span className="ml-1">To do: </span>}
+              <input
+                type="text"
+                placeholder={!!this.props.friend ? this.state.todo : "To do"}
+                value={this.state.todo}
+                onChange={this.onTodoChange}
+                required={false}
+              />
+              <span className="highlight"></span>
+              <span className="bar"></span>
+            </div>
+
+            <div className="col-md-3">
+              <button className="btn btn-primary add-friend-form__button-width card-1">Save Friend</button>
+            </div>
+          </div>
+
+
         </form>
       </div>
     )

@@ -4,7 +4,12 @@ import { startLogout } from '../actions/auth';
 
 export const LogOutButton = ( { startLogout }) => (
   <div className="d-flex flex-column justify-content-center">
-    <button className="button-link" onClick={startLogout}>Logout</button>
+    <button
+      className="button-link"
+      onClick={startLogout}
+    >
+      Logout
+    </button>
   </div>
 );
 

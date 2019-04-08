@@ -44,8 +44,11 @@ class EditAccountForm extends React.Component {
   // Render component
   render() {
     return (
-      <div className="center-horrizontally mt-3">
-        <form onSubmit={this.onSubmit} className="border p-3 border-dark">
+      <div className="container card-2 mt-4">
+      <div>
+        <h1 className="text-center">Your account</h1>
+      </div>
+        <form onSubmit={this.onSubmit} className="p-3">
           <div className="container">
             <div className="row">
               <label className="col">First Name</label>
@@ -55,6 +58,7 @@ class EditAccountForm extends React.Component {
                 value={this.state.firstName}
                 onChange={this.onFirstNameChange}
                 className="col-md-7"
+                disabled={true}
               />
             </div>
             <div className="row">
@@ -65,6 +69,7 @@ class EditAccountForm extends React.Component {
                 value={this.state.lastName}
                 onChange={this.onLastNameChange}
                 className="col-md-7"
+                disabled={true}
               />
             </div>
             <div className="row">
@@ -75,6 +80,7 @@ class EditAccountForm extends React.Component {
                 value={this.state.email}
                 onChange={this.onEmailChange}
                 className="col-md-7"
+                disabled={true}
               />
             </div>
           </div>

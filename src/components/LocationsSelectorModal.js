@@ -45,19 +45,20 @@ class LocationsSelectorModal extends React.Component {
           onRequestClose={this.onCloseButtonClick}
           closeTimeoutMS={200}
           contentLabel={'Confirm'}
-          className="bg-light modal filter-modal border border-dark pb-4"
+          className="bg-light custom-modal modal__large-modal border border-dark rounded card-4 pb-4"
         >
           <div>
-          <div className="button-center mb-3">
-            <button className="mr-3" onClick={this.onSelectAllClick}>Select All</button>
-            <button className="mr-3" onClick={this.onSelectNoneClick}>Select None</button>
-            <button onClick={this.onCloseButtonClick}>Close</button>
-          </div>
+            <h3 className="center-text mt-2">Locations</h3>
+            <div className="center-horrizontally mb-3">
+              <button className="mr-3 btn btn-info" onClick={this.onSelectAllClick}>Select All</button>
+              <button className="mr-3 btn btn-info" onClick={this.onSelectNoneClick}>Select None</button>
+              <button className="btn btn-primary" onClick={this.onCloseButtonClick}>Done</button>
+            </div>
             <LocationsSelector/>
           </div>
         </Modal>
 
-        <button className="mt-3" onClick={this.onFilterButtonClick}>Locations</button>
+        <button className="mt-3 btn btn-info card-1" onClick={this.onFilterButtonClick}>Locations</button>
 
       </div>
     )
