@@ -32,8 +32,12 @@ export const LoginPage = ({ startLogin }) => {
           className="btn btn-lg btn-primary"
 >>>>>>> master
           id="button_key"
+<<<<<<< HEAD
 >>>>>>> master
           >Login with Google
+=======
+        >Login with Google
+>>>>>>> master
         </button>
       </div>
     </div>
