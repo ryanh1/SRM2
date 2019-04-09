@@ -58,7 +58,7 @@ class LocationsSelectorModal extends React.Component {
           </div>
         </Modal>
 
-        <button className="mt-3 btn btn-info card-1" onClick={this.onFilterButtonClick}>Locations</button>
+        <button className="mt-3 btn btn-info" onClick={this.onFilterButtonClick}>Locations</button>
 
       </div>
     )

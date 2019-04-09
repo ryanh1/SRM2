@@ -50,7 +50,7 @@ class EditListForm extends React.Component {
             </div>
           </div>
           <div className="text-center">
-            <button className="btn btn-primary">Save List Name</button>
+            <button className="btn btn-primary card-1">Save List Name</button>
           </div>
         </form>
       </div>

@@ -85,7 +85,7 @@ class EditAccountForm extends React.Component {
             </div>
           </div>
           <div className="text-center">
-            <button className="mt-3">Save Account Details</button>
+            <button className="btn btn-primary mt-3">Save Account Details</button>
           </div>
         </form>
       </div>

@@ -71,13 +71,13 @@ class DeleteFriendOpenModalButton extends React.Component {
           {console.log('Inside Modal. ','this.state.modalOpen = ', this.state.modalOpen)}
           <div className="pl-3 pr-3">Are you sure you want to delete friend: {this.state.friend.firstName} {this.state.friend.lastName}?</div>
           <div className="center-horrizontally mt-3">
-            <button className="m-3 btn btn-danger" onClick={this.onYesButtonClick}>Yes</button>
-            <button className="m-3 btn btn-info" onClick={this.onNoButtonClick}>No</button>
+            <button className="m-3 btn btn-danger card-1" onClick={this.onYesButtonClick}>Yes</button>
+            <button className="m-3 btn btn-info card-1" onClick={this.onNoButtonClick}>No</button>
           </div>
         </Modal>
 
         {console.log('Inside DeleteFriendOpenModalButton ', 'this.props.modalOpen = ', this.state.modalOpen)}
-        <button className="btn btn-info" onClick={this.onDeleteButtonClick}>Delete {this.props.friend.firstName} {this.props.friend.lastName}</button>
+        <button className="btn btn-info card-1" onClick={this.onDeleteButtonClick}>Delete {this.props.friend.firstName} {this.props.friend.lastName}</button>
 
       </div>
     )
