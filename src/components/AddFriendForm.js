@@ -185,7 +185,7 @@ class AddFriendForm extends React.Component {
             </div>
 
             <div className="col-md-3">
-              <button className="btn btn-primary add-friend-form__button-width card-1">Save Friend</button>
+              <button className="btn btn-primary add-friend-form__button-width card-1 mb-3">Save Friend</button>
             </div>
           </div>
 
