@@ -14,7 +14,7 @@ export const LoginPage = ({ startLogin }) => {
       <div className="text-center" id="button-key">
         <button
           onClick={startLogin}
-          className="btn btn-lg btn-primary"
+          className="btn btn-lg btn-primary card-1"
           id="button_key"
         >Login with Google
         </button>

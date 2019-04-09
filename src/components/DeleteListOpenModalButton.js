@@ -64,8 +64,8 @@ class DeleteListOpenModalButton extends React.Component {
         >
           <div className="pl-3 pr-3">Are you sure you want to delete list {this.state.priority}?</div>
           <div className="mt-3 center-horrizontally">
-            <button className="m-3 btn btn-danger" onClick={this.onYesButtonClick}>Yes</button>
-            <button className="m-3 btn btn-secondary" onClick={this.onNoButtonClick}>No</button>
+            <button className="m-3 btn btn-danger card-1" onClick={this.onYesButtonClick}>Yes</button>
+            <button className="m-3 btn btn-secondary card-1" onClick={this.onNoButtonClick}>No</button>
           </div>
         </Modal>
 
