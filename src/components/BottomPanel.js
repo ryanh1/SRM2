@@ -16,7 +16,7 @@ const BottomPanel = (props) => {
         <div
           className="col-sm-12 col-md-6 col-lg-6 col-xl-4"
           key={list.priority}>
-            <div className="card-2 p-2">
+            <div className="card-2 p-2 mb-3">
               <FriendList list={list} key={list.priority}/>
             </div>
         </div>
@@ -33,7 +33,7 @@ const BottomPanel = (props) => {
               <div className="col-1">
                 <LocationsSelectorModal/>
               </div>
-              <h1 className="col-10 text-center">Your friends</h1>
+              <h3 className="col-10 text-center">Your friends</h3>
               <div className="col-1"></div>
             </div>
           </div>
