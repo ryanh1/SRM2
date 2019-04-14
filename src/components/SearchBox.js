@@ -8,7 +8,7 @@ class SearchBox extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchText: ''
+      searchText: props.searchText
     }
   }
 
@@ -36,4 +36,11 @@ class SearchBox extends React.Component {
   }
 }
 
-export default connect()(SearchBox);
+const mapStateToProps = (state) => {
+  return {
+    searchText: state.search
+  }
+}
+
+
+export default connect(mapStateToProps)(SearchBox);
