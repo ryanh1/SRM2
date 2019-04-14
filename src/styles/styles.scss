@@ -4,6 +4,7 @@
 @import "~bootstrap/scss/bootstrap";
 @import './material-select';
 @import './form-inputs';
+@import './expanding-search-box';
 // @import "~materialize-css/dist/css/materialize.min.css";
 
 
@@ -198,6 +199,22 @@ a:hover {
 
 .locations-selector {
   height: 53vh;
+}
+
+.locations-selector-button {
+  background-color: $info;
+  border: 1px solid $info;
+  // display: table-cell;
+  height: 50px;
+  // position: relative;
+  // text-align: center;
+  // vertical-align: middle;
+  width: 50px;
+  // z-index: 2;
+}
+
+.locations-selector-button:hover {
+  background-color: #bababa;
 }
 
 // Navbar

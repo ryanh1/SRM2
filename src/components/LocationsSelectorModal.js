@@ -58,7 +58,9 @@ class LocationsSelectorModal extends React.Component {
           </div>
         </Modal>
 
-        <button className="btn btn-info" onClick={this.onFilterButtonClick}>Locations</button>
+        <button className="locations-selector-button" onClick={this.onFilterButtonClick}>
+          <i className="material-icons">location_on</i>
+        </button>
 
       </div>
     )

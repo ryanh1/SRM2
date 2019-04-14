@@ -130,7 +130,7 @@ class AddFriendForm extends React.Component {
                             {
                               this.props.lists.map(
                                 (list) => {
-                                  return <option value={list.priority}>
+                                  return <option value={list.priority} id={list.priority}>
                                     {list.priority}: {list.name}
                                     </option>
                                 }
