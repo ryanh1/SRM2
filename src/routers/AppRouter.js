@@ -11,7 +11,6 @@ import EditAccountForm from '../components/EditAccountForm';
 import EditListForm from '../components/EditListForm';
 import LandingPage from '../components/LandingPage';
 import Contact from '../components/Contact';
-import SearchPage from '../components/SearchPage';
 
 import createHistory from 'history/createBrowserHistory';
 import PrivateRoute from './PrivateRoute';
@@ -37,7 +36,6 @@ class AppRouter extends React.Component {
             <PrivateRoute path="/ManageLists" component={ManageLists} exact={true}/>
             <PrivateRoute path="/Contact" component={Contact} exact={true}/>
             <PrivateRoute path="/account" component={EditAccountForm} exact={true}/>
-						<PrivateRoute path="/search" component={SearchPage} exact={true}/>
           </Switch>
         </div>
       </Router>

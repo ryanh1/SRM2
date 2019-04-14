@@ -21,12 +21,16 @@ class SearchBox extends React.Component {
   render() {
     return (
       <div className="center-horrizontally">
-        <input
-          type="search"
-          placeholder="Search..."
-          value={this.state.searchText}
-          onChange={this.onInputChange}
-        />
+        <div className="group">
+          <input
+            type="search"
+            placeholder="Search..."
+            value={this.state.searchText}
+            onChange={this.onInputChange}
+          />
+          <span className="highlight"></span>
+          <span className="bar"></span>
+        </div>
       </div>
     )
   }

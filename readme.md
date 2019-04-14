@@ -15,30 +15,38 @@ That file serves index.html, in the public folder.
 **This app uses the following technologies**
 
 Overall:
-*Front end: React
-*Back end: Node
-*Server: Express
-*Database: Firebase
-*Managing state: Redux
-*Version control: git
-*Deployment: heroku
+* Front end: React
+* Back end: Node
+* Server: Express
+* Database: Firebase
+* Managing state: Redux
+* Version control: git
+* Deployment: heroku
 
 Styles:
-*Bootstrap
-*Custom CSS and SaaS in the style of Google's Material Design
+* Bootstrap
+* Custom CSS and SaaS in the style of Google's Material Design
 
 Analytics:
-*Amplitude
-*Quantcast Measure
-*Google Analytics
-*All through Google tag manager
+* Amplitude
+* Quantcast Measure
+* Google Analytics
+* All through Google tag manager
 
 Other technologies:
-*Tooltip: React-tooltip
-*Time objects: moment
-*Unique identifiers: uuid
-*Appcues for user onboarding (turned off)
+* Tooltip: React-tooltip
+* Time objects: moment
+* Unique identifiers: uuid
+* Appcues for user onboarding (turned off)
 
 File transformations:
-*Webpack
-*Babel
+* Webpack
+* Babel
+
+Key features:
+* Search that is instantly responsive, shows the truncated section of notes found, and puts the search term in bold face.
+* Location filters with checkboxes and scrollable area inside the modal.
+* Appcues-style welcome guide when you first join with intelligent modals.
+* Basic CRUD for major objects.
+* Cascade CRUD.  For example, certain objects are deleted in the database when their parents are deleted.
+* Ordering friends within lists.
