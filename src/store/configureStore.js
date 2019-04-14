@@ -8,6 +8,7 @@ import authReducer from '../reducers/auth';
 import accountReducer from '../reducers/account';
 import locationsReducer from '../reducers/locations';
 import guidesReducer from '../reducers/guides';
+import searchReducer from '../reducers/search';
 
 
 // Store creation
@@ -24,6 +25,7 @@ export default () => {
       account: accountReducer,
       locations: locationsReducer,
       guides: guidesReducer,
+      search: searchReducer
     }),
     composeEnhancers(applyMiddleware(thunk))
   );

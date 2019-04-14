@@ -4,48 +4,61 @@ import {connect} from 'react-redux';
 
 import LocationsSelectorModal from './LocationsSelectorModal';
 import FriendList from './FriendList';
+import SearchBox from './SearchBox';
+import ListKanban from './ListKanban';
+import SearchSection from './SearchSection';
 
 
-const BottomPanel = (props) => {
 
-  let friendLists = [];
-  (!props.lists || props.lists.length === 0) ?
-    friendLists.push(<span key='span'></span>) : (
-    props.lists.map( (list) => {
-      friendLists.push(
-        <div
-          className="col-sm-12 col-md-6 col-lg-6 col-xl-4"
-          key={list.priority}>
-            <div className="card-2 p-2 mb-3">
-              <FriendList list={list} key={list.priority}/>
-            </div>
-        </div>
-      )
-    })
-  )
+class BottomPanel extends React.Component {
 
-  return (
-    <div>
-      <div id="Your_friends">
-        {props.locations.length > 0 ? (
-          <div className="container">
-            <div className="row justify-content-between mb-4">
-              <div className="col-1">
-                <LocationsSelectorModal/>
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchMode: false
+    }
+  }
+
+  toggleMode = () => {
+    this.setState((prevState) => ({searchMode: !prevState.searchMode}));
+  }
+
+  render() {
+    return (
+      <div>
+
+        {/* Header buttons */}
+        <div id="Your_friends">
+          {this.props.locations.length > 0 ? (
+            <div className="container">
+              <div className="row justify-content-between mb-4">
+                <div className="col-md-1 col-2"><LocationsSelectorModal/></div>
+                <div className="col-md-1 col-2">
+                  <button
+                    className="locations-selector-button"
+                    onClick={this.toggleMode}
+                  >
+                    <i className="material-icons">
+                      {this.state.searchMode === true ? 'view_column' : 'search'}
+                    </i>
+                  </button>
+                </div>
+                <div className="col-md-8 col-5">
+                  {this.state.searchMode === true ? <SearchBox /> : <h3 className="text-center">Your friends</h3>}
+                </div>
+                <div className="col-md-2 col-3"></div>
               </div>
-              <h3 className="col-10 text-center">Your friends</h3>
-              <div className="col-1"></div>
             </div>
-          </div>
-        ) : <div></div>}
-      </div>
-      <div className="container">
-        <div className="row">
-          {friendLists}
+          ) : <div></div>}
+        </div>
+
+        {/* Main content */}
+        <div>
+          {this.state.searchMode === true ? <SearchSection /> : <ListKanban /> }
         </div>
       </div>
-    </div>
-  );
+    )
+  }
 }
 
   const mapStateToProps = (state) => {
