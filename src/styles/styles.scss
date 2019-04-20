@@ -128,6 +128,31 @@ a:hover {
   flex-direction: column;
 }
 
+// .locations-selector-modal {
+//   @extend .bg-light;
+//   @extend .custom-modal;
+//   @extend .modal__large-modal;
+//   @extend .border;
+//   @extend .border-dark;
+//   @extend .rounded;
+//   @extend .card-4;
+//   @extend .pb-4;
+// }
+
+// .locations-selector-modal-content {
+  // position: absolute;
+  // height: 30vh;
+  // width: 60vw;
+  // top: 20%;
+  // left: 20%;
+  // @extend .border;
+  // @extend .border-dark;
+  // position: relative;
+  // margin-top: 10px;
+  // margin-bottom: 10px;
+  // flex-direction: column;
+// }
+
 // ButtonLink
 
 .button-link {
@@ -189,6 +214,14 @@ a:hover {
 }
 
 // LoadingPage
+
+.loading-page__loader {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  width: 100vw;
+}
 
 .loading-page__loader-image {
   height: 6rem;

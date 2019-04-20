@@ -1,7 +1,7 @@
 import React from 'react';
 
 const LoadingPage = () => (
-  <div className="center-horrizontally center-vertically">
+  <div className="loading-page__loader">
     <img className="loading-page__loader-image" src="/images/loader.gif" />
   </div>
 );

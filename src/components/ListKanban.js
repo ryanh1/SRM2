@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {connect} from 'react-redux';
+import arraySort from 'array-sort';
 
 import LocationsSelectorModal from './LocationsSelectorModal';
 import FriendList from './FriendList';
@@ -12,7 +13,7 @@ const ListKanban = (props) => {
   let friendLists = [];
   (!props.lists || props.lists.length === 0) ?
     friendLists.push(<span key='span'></span>) : (
-    props.lists.map( (list) => {
+    arraySort(props.lists, 'priority').map( (list) => {
       friendLists.push(
         <div
           className="col-sm-12 col-md-6 col-lg-6 col-xl-4"

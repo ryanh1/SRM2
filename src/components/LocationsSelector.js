@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {connect} from 'react-redux';
+import arraySort from 'array-sort';
 
 import {startToggleLocation} from '../actions/locations';
 
@@ -22,7 +23,7 @@ class LocationsSelector extends React.Component {
     return (
       <div className="ml-3 mr-3">
         <div className="scrollable">
-          {this.props.locations.map(
+          {arraySort(this.props.locations, 'value').map(
             (location) => (
               <span key={location.value} className="mr-2 ml-2 overflow">
                 <div className="form-check">

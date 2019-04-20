@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {connect} from 'react-redux';
+import classNames from 'classnames';
 
 import LocationsSelectorModal from './LocationsSelectorModal';
 import FriendList from './FriendList';
 import SearchBox from './SearchBox';
 import ListKanban from './ListKanban';
 import SearchSection from './SearchSection';
-
+import { startToggleSearchMode } from '../actions/modes'
 
 
 class BottomPanel extends React.Component {
@@ -15,12 +16,13 @@ class BottomPanel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchMode: false
+      searchMode: props.searchMode
     }
   }
 
   toggleMode = () => {
     this.setState((prevState) => ({searchMode: !prevState.searchMode}));
+    this.props.dispatch(startToggleSearchMode());
   }
 
   render() {
@@ -43,10 +45,14 @@ class BottomPanel extends React.Component {
                     </i>
                   </button>
                 </div>
-                <div className="col-md-8 col-5">
+                <div
+                  className={classNames({"col-md-8": true, "col-5": !this.props.searchMode, "col-7": this.props.searchMode})}
+                >
                   {this.state.searchMode === true ? <SearchBox /> : <h3 className="text-center">Your friends</h3>}
                 </div>
-                <div className="col-md-2 col-3"></div>
+                <div
+                  className={classNames({"col-md-2": true, "col-3": !this.props.searchMode, "col-1": this.props.searchMode})}
+                ></div>
               </div>
             </div>
           ) : <div></div>}
@@ -66,7 +72,8 @@ class BottomPanel extends React.Component {
       lists: state.lists,
       locations: state.locations,
       friends: state.friends,
-      guides: state.guides
+      guides: state.guides,
+      searchMode: state.modes.searchMode
     }
   }
 
