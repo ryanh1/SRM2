@@ -10,7 +10,6 @@ import filterOutFriendById from '../selectors/filterOutFriendById';
 import sortFriendsInList from '../selectors/sortFriendsInList';
 import selectFriendsBySelectedLocations from '../selectors/selectFriendsBySelectedLocations';
 
-// import DeleteListButton from './deleteListButton';
 import DeleteListOpenModalButton from './DeleteListOpenModalButton';
 import { startEditFriend } from '../actions/friends';
 import {defaultName0, defaultPriority} from '../system/variables';

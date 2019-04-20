@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { startLogin } from '../actions/auth';
 import {amp} from '../amplitude/amplitude';
-// import Landing from './Landing';
 
 
 export const LoginPage = ({ startLogin }) => {

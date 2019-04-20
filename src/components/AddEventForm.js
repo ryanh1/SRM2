@@ -27,12 +27,12 @@ export default class AddEventForm extends React.Component {
     if (!this.state.date || !this.state.note) {
       this.setState(() => ({error: 'Please provide description and amount.'}));
     } else {
-      this.setState(() => ({error: ''}));
       this.props.onSubmit({
         note: this.state.note,
         date: this.state.date,
         friendID: this.state.friendID
       });
+      this.setState(() => ({note: '', date: Date.now(), error: ''}));
     }
   }
 

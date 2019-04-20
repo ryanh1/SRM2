@@ -126,11 +126,11 @@ class AddFriendForm extends React.Component {
                             onChange={this.onPriorityChange}
                             className="select-text"
                           >
-                            <option value="" disabled={true} selected={true}></option>
+                            {/* <option value="" disabled={true} selected={true}></option> */}
                             {
                               this.props.lists.map(
                                 (list) => {
-                                  return <option value={list.priority} id={list.priority}>
+                                  return <option value={list.priority} id={list.priority} key={list.priority}>
                                     {list.priority}: {list.name}
                                     </option>
                                 }

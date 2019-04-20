@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import moment from 'moment';
 
-import DeleteEventButton from './DeleteEventButton';
+import DeleteEventOpenModalButton from './DeleteEventOpenModalButton';
 
 const Event = (props) => (
   <div className="text-left m-2 p-2 bg-light card-1">
     <div>{moment(props.date).format("MMM Do YYYY, h:mm:ss a")}</div>
     <div>{props.note}</div>
-    <DeleteEventButton id={props.id}/>
+    <DeleteEventOpenModalButton eventId={props.id}/>
   </div>
 );
 

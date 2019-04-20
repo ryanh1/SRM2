@@ -27,6 +27,7 @@ class SearchBox extends React.Component {
             placeholder="Search..."
             value={this.state.searchText}
             onChange={this.onInputChange}
+            autoFocus={true}
           />
           <span className="highlight"></span>
           <span className="bar"></span>
