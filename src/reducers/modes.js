@@ -1,5 +1,6 @@
 const modesReducerDefaultState = {
-  searchMode: false
+  searchMode: false,
+  addFriendMode: true
 };
 
 const modesReducer = (
@@ -11,6 +12,16 @@ const modesReducer = (
         ...state,
         searchMode: !state.searchMode
       };
+    case 'TOGGLE_ADD_FRIEND_MODE':
+      return {
+        ...state,
+        addFriendMode: !state.addFriendMode
+      };
+    case 'SET_MODES':
+      return {
+        ...state,
+        ...action.modes
+      }
     default:
       return state;
   }
