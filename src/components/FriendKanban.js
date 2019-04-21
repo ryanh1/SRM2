@@ -10,7 +10,7 @@ const FriendKanban = (props) => {
 
   return (
     <div className="container-fluid">
-      <TopPanel locations={props.locations}/>
+      <TopPanel locations={props.locations} />
       <BottomPanel />
       <Guide friends={props.friends} guides={props.guides} page={"FriendKanban"} />
     </div>
