@@ -129,6 +129,11 @@ class AddFriendPage extends React.Component {
                 self.props.dispatch(startAddList(friend.priority));
               }
               history.push('/');
+              document.body.classList.add('background-gradient-animation');
+              setTimeout( function() {
+                document.querySelector('body').classList.remove('background-gradient-animation')
+              },
+              7000);
             }
         }
       />

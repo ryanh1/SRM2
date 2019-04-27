@@ -26,3 +26,10 @@ $break-xl: 1200px;
 
 $input-width: 200px;
 $input-label-font-size: 18px;
+
+/* --- OTHER --- */
+$background-animation-length: 12s;
+
+:export {
+  // background-animation-length-ms: $background-animation-length * 1000;
+}
