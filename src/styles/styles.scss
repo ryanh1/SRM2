@@ -64,6 +64,7 @@ a:hover {
 .card-2 {
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  background-color: $white;
 }
 
 .card-2:hover {
@@ -90,6 +91,37 @@ a:hover {
 
 .card-5 {
   box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+
+/* --- Animated background --- */
+
+@keyframes LoadAnimation {
+  // 0 seconds
+  0% {
+    background-position: 0% 0%;
+  }
+  // 1.5 seconds
+  // 50% {
+  //   background-position: 50% 50%;
+  // }
+  // 3 seconds
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+.static-background {
+  background: linear-gradient(to right, white, white, white, $primary, #00bfa5, white, white, white, white );
+  transition: background 1s;
+  background-size: 400% 100%;
+}
+
+.background-gradient-animation {
+  // background-image: linear-gradient(to bottom right, white, $primary, #b9f6ca, #42a5f5, #7986cb, #5c6bc0);
+  // Infinite means that it keeps repeating
+  @extend .static-background;
+  // Run an animation called LoadAnimation.
+  animation: LoadAnimation $background-animation-length ease;
 }
 
 /* --- Base components --- */
