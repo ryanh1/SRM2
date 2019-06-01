@@ -3,13 +3,14 @@ import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 import { connect } from 'react-redux';
 
-import {startRemoveFriend} from '../actions/friends';
-// import {startRemoveList} from '../actions/lists';
+import {startRemoveFriend, startEditFriend} from '../actions/friends';
+import {startRemoveList } from '../actions/lists';
 import {startRemoveLocation} from '../actions/locations';
 import {startRemoveEvent} from '../actions/events';
 import numberOfFriendsWithLocation from '../selectors/numberOfFriendsWithLocation';
 import numberOfFriendsWithPriority from '../selectors/numberOfFriendsWithPriority';
 import selectEventsByFriendID from '../selectors/selectEventsByFriendID';
+import selectFriendsByPriority from '../selectors/selectFriendsByPriority';
 
 
 class DeleteFriendOpenModalButton extends React.Component {
@@ -17,7 +18,8 @@ class DeleteFriendOpenModalButton extends React.Component {
     super(props);
     this.state = {
       modalOpen: props.modalOpen,
-      friend: props.friend
+      friend: props.friend,
+      filteredFriends: selectFriendsByPriority(props.friends, props.friend.priority)
     }
   }
 
@@ -36,10 +38,40 @@ class DeleteFriendOpenModalButton extends React.Component {
       this.props.dispatch(startRemoveLocation(this.state.friend.location));
     }
 
-    // 2. If friend was the only one with this list, delete lists
+    // 2A If friend was the only one with this list, delete lists
     // if (numberOfFriendsWithPriority(this.props.friends, this.state.friend.priority) <= 1) {
     //   this.props.dispatch(startRemoveList(this.state.friend.priority));
     // }
+
+    // 2B. If the old list is empty, delete it.
+    var self = this;
+    var originalPriority = this.state.friend.priority;
+    var originalOrderInList = this.state.friend.orderInList;
+    var originalFriendID = this.state.friend.id;
+    var countInListBeforeDelete = 0;
+    this.state.filteredFriends.forEach(
+      function(friend) {
+        if (friend.priority == originalPriority) {
+          countInListBeforeDelete += 1;
+        }
+      }
+    )
+    console.log('countInListBeforeDelete: ', JSON.stringify(countInListBeforeDelete));
+    if (countInListBeforeDelete === 0 ) {
+      this.props.dispatch(startRemoveList(originalPriority));
+    } else {
+      // 2C. If the old list is not empty, decrementOrderOfHigherFriends
+      this.state.filteredFriends.forEach(
+        function(friend) {
+          if (friend.orderInList > originalOrderInList) {
+            if (friend.id != originalFriendID) {
+              friend.orderInList -= 1;
+              self.props.dispatch(startEditFriend(friend.id, friend));
+            }
+          }
+        }
+      )
+    }
 
     // 3. Delete all of that friend's events.
     const friendsEvents = selectEventsByFriendID(this.props.events, this.state.friend.id);
@@ -88,7 +120,7 @@ class DeleteFriendOpenModalButton extends React.Component {
 const mapStateToProps = (state) => {
     return {
       friends: state.friends,
-      events: state.events
+      events: state.events,
     };
 };
 
