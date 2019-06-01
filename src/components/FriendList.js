@@ -1,3 +1,4 @@
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {connect} from 'react-redux';
@@ -9,11 +10,13 @@ import selectFriendsByPriority from '../selectors/selectFriendsByPriority';
 import filterOutFriendById from '../selectors/filterOutFriendById';
 import sortFriendsInList from '../selectors/sortFriendsInList';
 import selectFriendsBySelectedLocations from '../selectors/selectFriendsBySelectedLocations';
+import numberOfListsWithPriority from '../selectors/numberOfListsWithPriority';
+import { sortOrder, resetOrderInList } from '../selectors/sortFriendsArray';
 
 import DeleteListOpenModalButton from './DeleteListOpenModalButton';
 import { startEditFriend } from '../actions/friends';
 import {defaultName0, defaultPriority} from '../system/variables';
-import { startAddList, startRemoveList } from '../actions/lists'
+import { startAddList, startRemoveList } from '../actions/lists';
 
 
 class FriendList extends React.Component {
@@ -90,6 +93,8 @@ class FriendList extends React.Component {
 
   onUpButton = (friend) => {
       console.log('onUpButton', friend.firstName, friend.lastName, 'order', friend.orderInList);
+      // console.log('sortedFriendList: ', JSON.stringify(resetOrderInList(sortOrder(this.state.filteredFriends)).map((i) => i.orderInList)));
+
       var overlappingFriend = this.state.filteredFriends.find((f) => f.orderInList === friend.orderInList - 1);
       if (overlappingFriend != undefined) {
         console.log(friend.firstName, friend.lastName, 'going to overlap with', overlappingFriend.firstName, overlappingFriend.lastName);

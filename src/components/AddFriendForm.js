@@ -4,6 +4,8 @@ import {connect} from 'react-redux';
 import {findDOMNode} from 'react-dom'
 import ReactTooltip from 'react-tooltip';
 
+import {startRemoveFriend, startEditFriend} from '../actions/friends';
+import {startRemoveList } from '../actions/lists';
 import {history} from '../routers/AppRouter';
 import {defaultPriority, defaultName0} from '../system/variables';
 import selectFriendsByPriority from '../selectors/selectFriendsByPriority';
@@ -21,7 +23,7 @@ class AddFriendForm extends React.Component {
       orderInList: props.friend ? props.friend.orderInList: '',
       events: props.friend ? props.friend.events: [],
       todo: props.friend ? props.friend.todo: '',
-      location: props.friend ? props.friend.location: '',
+      location: props.friend ? props.friend.location: ''
     }
   }
 
@@ -63,6 +65,43 @@ class AddFriendForm extends React.Component {
   onSubmit = (e) => {
     e.preventDefault();
     console.log('Called onSubmit function within AddFriendForm: ','priority: ', this.state.priority);
+
+    // Reorder friends above this one in order
+    if (!!this.props.friend) {
+      var filteredFriends = selectFriendsByPriority(this.props.friends, this.state.priority);
+      // 2B. If the old list is empty, delete it.
+      var self = this;
+      var originalPriority = this.state.priority;
+      var originalOrderInList = this.state.orderInList;
+      var originalFriendID = this.state.id;
+      var countInListBeforeEdit = 0;
+      filteredFriends.forEach(
+        function(friend) {
+          if (friend.priority == originalPriority) {
+            countInListBeforeEdit += 1;
+          }
+        }
+      )
+      console.log('countInListBeforeEdit: ', JSON.stringify(countInListBeforeEdit));
+      if (countInListBeforeEdit === 0 ) {
+        this.props.dispatch(startRemoveList(originalPriority));
+      } else {
+        // 2C. If the old list is not empty, decrementOrderOfHigherFriends
+        filteredFriends.forEach(
+          function(friend) {
+            if (friend.orderInList > originalOrderInList) {
+              if (friend.id != originalFriendID) {
+                friend.orderInList -= 1;
+                self.props.dispatch(startEditFriend(friend.id, friend));
+              }
+            }
+          }
+        )
+      }
+
+    }
+
+
     this.props.onSubmit({
       id: this.state.id,
       firstName: this.state.firstName == '' ? 'First' : this.state.firstName,
