@@ -20,8 +20,8 @@ Overall:
 * Server: Express
 * Database: Firebase
 * Managing state: Redux
-* Version control: git
-* Deployment: heroku
+* Version control: Git
+* Deployment: Heroku
 
 Styles:
 * Bootstrap
@@ -37,7 +37,8 @@ Other technologies:
 * Tooltip: React-tooltip
 * Time objects: moment
 * Unique identifiers: uuid
-* Appcues for user onboarding (turned off)
+* User onboarding modals: Appcues (turned off)
+* Contact form: Formspree
 
 File transformations:
 * Webpack
@@ -49,4 +50,6 @@ Key features:
 * Appcues-style welcome guide when you first join with intelligent modals.
 * Basic CRUD for major objects.
 * Cascade CRUD.  For example, certain objects are deleted in the database when their parents are deleted.
+* Responsive, mobile-friendly CSS.
 * Ordering friends within lists.
+* Feature flags.
