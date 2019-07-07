@@ -12,6 +12,7 @@ import extractLocationsFromFriends from '../selectors/extractLocationsFromFriend
 import numberOfFriendsWithLocation from '../selectors/numberOfFriendsWithLocation';
 import numberOfFriendsWithPriority from '../selectors/numberOfFriendsWithPriority';
 import numberOfListsWithPriority from '../selectors/numberOfListsWithPriority';
+import {backgroundGradient} from '../system/featureFlags';
 
 
 class AddFriendPage extends React.Component {
@@ -129,11 +130,14 @@ class AddFriendPage extends React.Component {
                 self.props.dispatch(startAddList(friend.priority));
               }
               history.push('/');
-              document.body.classList.add('background-gradient-animation');
-              setTimeout( function() {
-                document.querySelector('body').classList.remove('background-gradient-animation')
-              },
-              7000);
+
+              if (backgroundGradient) {
+                document.body.classList.add('background-gradient-animation');
+                setTimeout( function() {
+                  document.querySelector('body').classList.remove('background-gradient-animation')
+                },
+                7000);
+              }
             }
         }
       />
