@@ -300,14 +300,16 @@ a:hover {
 // Video Container
 .video-container{
   position: relative;
-  width: 100%;
-  padding-bottom: 56.25%;
+  width: 50%;
+  padding-bottom: 28.125%;
+  left: 25%;
   height: 0;
+  overflow: hidden;
 }
 .video-container iframe{
   position: absolute;
-  top:0;
-  left: 25%;
-  width: 50%;
-  height: 50%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
