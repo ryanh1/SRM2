@@ -296,3 +296,18 @@ a:hover {
   @extend .mb-4;
   @extend .p-3;
 }
+
+// Video Container
+.video-container{
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+}
+.video-container iframe{
+  position: absolute;
+  top:0;
+  left: 25%;
+  width: 50%;
+  height: 50%;
+}
