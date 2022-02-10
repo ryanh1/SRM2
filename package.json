@@ -51,7 +51,7 @@
     "materialize-css": "^1.0.0",
     "moment": "^2.22.2",
     "muicss": "^0.9.41",
-    "node-sass": "^4.10.0",
+    "node-sass": "^7.0.0",
     "normalize.css": "^8.0.0",
     "postcss-loader": "^3.0.0",
     "precss": "^4.0.0",
