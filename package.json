@@ -49,7 +49,7 @@
     "git": "^0.1.5",
     "history": "^4.7.2",
     "materialize-css": "^1.0.0",
-    "moment": "^2.22.2",
+    "moment": "^2.29.4",
     "muicss": "^0.9.41",
     "node-sass": "^4.10.0",
     "normalize.css": "^8.0.0",
